@@ -333,7 +333,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -454,7 +454,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 70
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerDay
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &874478068
@@ -605,8 +605,10 @@ MonoBehaviour:
   lookSensitivity: 1
   lookRange: 80
   PlayerControls: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  PlayerActionMapName: Player
   playerCamera: {fileID: 734302733}
   mouseYRotation: 0
+  tabletState: 0
 --- !u!1 &1207374282
 GameObject:
   m_ObjectHideFlags: 0

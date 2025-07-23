@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using UnityEngine.InputSystem.Controls;
 
-public class PlayerMovementDay : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Speeds")]
     [SerializeField] private float walkSpeed = 3f;
@@ -16,6 +17,7 @@ public class PlayerMovementDay : MonoBehaviour
 
     [Header("Input Action")]
     [SerializeField] private InputActionAsset PlayerControls;
+    [SerializeField] private string PlayerActionMapName = "Player";
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -34,6 +36,7 @@ public class PlayerMovementDay : MonoBehaviour
     private float crouchHeight = 1f;
     private float gravity = -9.81f;
     private float verticalVelocity = 0f;
+    public bool tabletState = false;
 
     private void Awake()
     {
@@ -45,18 +48,21 @@ public class PlayerMovementDay : MonoBehaviour
 
         originalHeight = characterController.height; // Stocke la hauteur d'origine
 
-        var PlayerDay = PlayerControls.FindActionMap("PlayerDay");
-        moveAction = PlayerDay.FindAction("Move");
-        lookAction = PlayerDay.FindAction("Look");
-        sprintAction = PlayerDay.FindAction("Sprint");
-        crouchAction = PlayerDay.FindAction("Crouch");
-        //interactAction = PlayerDay.FindAction("Interact");
-        //tabletToggle = PlayerDay.FindAction("Tablet");
+        var PlayerActionMap = PlayerControls.FindActionMap(PlayerActionMapName);
+        moveAction = PlayerActionMap.FindAction("Move");
+        lookAction = PlayerActionMap.FindAction("Look");
+        sprintAction = PlayerActionMap.FindAction("Sprint");
+        crouchAction = PlayerActionMap.FindAction("Crouch");
+        interactAction = PlayerActionMap.FindAction("Interact");
+        tabletToggle = PlayerActionMap.FindAction("Tablet");
 
         if (moveAction == null)
         {
             Debug.LogError("Move action found:");
         }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -65,8 +71,10 @@ public class PlayerMovementDay : MonoBehaviour
         lookAction.Enable();
         sprintAction.Enable();
         crouchAction.Enable();
-        //interactAction.Enable();
-        //tabletToggle.Enable();
+        interactAction.Enable();
+        interactAction.started += OnInteractPerformed;
+        tabletToggle.Enable();
+        tabletToggle.performed += ctx => OnTabletToggle();
     }
     private void OnDisable()
     {
@@ -74,17 +82,68 @@ public class PlayerMovementDay : MonoBehaviour
         lookAction.Disable();
         sprintAction.Disable();
         crouchAction.Disable();
-        //interactAction.Disable();
-        //tabletToggle.Disable();
+        interactAction.Disable();
+        interactAction.started -= OnInteractPerformed;
+        tabletToggle.Disable();
+        tabletToggle.performed -= ctx => OnTabletToggle();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         moveInput = moveAction.ReadValue<Vector2>();
         lookInput = lookAction.ReadValue<Vector2>();
         Move();
         Rotation();
     }
+
+
+
+    public void OnTabletToggle()
+    {
+        Debug.Log("Tablet toggle");
+        tabletState = !tabletState;
+        switch (tabletState)
+        {
+            case true:
+                ShowTablet();
+                break;
+            case false:
+                HideTablet();
+                break;
+        }
+    }
+
+    public void ShowTablet()
+    {
+        Debug.Log("Show tablet");
+        moveAction.Disable();
+        lookAction.Disable();
+        crouchAction.Disable();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void HideTablet()
+    {
+        Debug.Log("Hide tablet");
+        moveAction.Enable();
+        lookAction.Enable();
+        crouchAction.Enable();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public bool GetTabletState(bool state)
+    {
+        return tabletState;
+    }
+
+    private void OnInteractPerformed(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Player wants to interact");
+        
+    }
+
 
     private void Move()
     {
