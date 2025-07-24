@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private InputActionAsset PlayerControls;
     [SerializeField] private string PlayerActionMapName = "Player";
 
+    [Header("Linked Components")]
+    [SerializeField] private Canvas TabletCanva;
+
+
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction crouchAction;
@@ -63,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (TabletCanva != null)
+        {
+            TabletCanva.enabled = false;
+        }
+        else
+        {
+            Debug.LogWarning("TabletCanva is not assigned or is null.");
+        }
     }
 
     private void OnEnable()
@@ -121,6 +133,14 @@ public class PlayerMovement : MonoBehaviour
         crouchAction.Disable();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (TabletCanva != null)
+        {
+            TabletCanva.enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning("TabletCanva is not assigned or is null.");
+        }
     }
 
     public void HideTablet()
@@ -131,6 +151,14 @@ public class PlayerMovement : MonoBehaviour
         crouchAction.Enable();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        if (TabletCanva != null)
+        {
+            TabletCanva.enabled = false;         
+        }
+        else
+        {
+            Debug.LogWarning("TabletCanva is not assigned or is null.");
+        }
     }
 
     public bool GetTabletState(bool state)
