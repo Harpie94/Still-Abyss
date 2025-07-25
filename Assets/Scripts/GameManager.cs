@@ -1,12 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-
 public class GameManager : MonoBehaviour
 {
-    
     #region Variables
-    
+
     public static GameManager Instance;
 
     public enum GameState
@@ -16,11 +14,26 @@ public class GameManager : MonoBehaviour
         Dead
     }
 
+    public enum DayNightState
+    {
+        Day,
+        Night
+    }
+
     public GameObject player;
     public string playerTag = "Player";
-    
+
+    // Cycle jour/nuit
+    public DayNightState CurrentDayNightState { get; private set; } = DayNightState.Day;
+    public float phaseDuration = 420f; // 7 minutes en secondes
+    private float phaseTimer = 0f;
+    public int maxCycles = 5;
+    private int currentCycle = 1;
+    public bool endlessMode = false;
+    public Light sunLight; // Assigner la Directional Light dans l'inspecteur
+
     #endregion
-    
+
     #region Basic Functions
 
     public GameState CurrentState { get; private set; } = GameState.InGame;
@@ -37,9 +50,54 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Update()
+    {
+        // Gestion du cycle jour/nuit uniquement en jeu
+        if (CurrentState != GameState.InGame) return;
+
+        phaseTimer += Time.deltaTime;
+        if (phaseTimer >= phaseDuration)
+        {
+            phaseTimer = 0f;
+            SwitchDayNight();
+        }
+
+        // Transition d’intensité de la lumière (exemple simple)
+        if (sunLight != null)
+        {
+            float t = phaseTimer / phaseDuration;
+            if (CurrentDayNightState == DayNightState.Day)
+                sunLight.intensity = Mathf.Lerp(1f, 0.2f, t); // Jour → Nuit
+            else
+                sunLight.intensity = Mathf.Lerp(0.2f, 1f, t); // Nuit → Jour
+        }
+    }
     
     #endregion
-    
+
+    #region Cycle Management
+
+    void SwitchDayNight()
+    {
+        if (CurrentDayNightState == DayNightState.Day)
+        {
+            CurrentDayNightState = DayNightState.Night;
+        }
+        else
+        {
+            CurrentDayNightState = DayNightState.Day;
+            currentCycle++;
+            if (!endlessMode && currentCycle > maxCycles)
+            {
+                SetGameState(GameState.Dead);
+            }
+        }
+        
+    }
+
+    #endregion
+
     #region Game State Management
 
     public delegate void GameStateChangedHandler(GameState newState);
@@ -81,9 +139,7 @@ public class GameManager : MonoBehaviour
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
         Time.timeScale = 0f;
-        
         // TODO: AJOUTER LE MENU PAUSE
-        
     }
 
     private void ApplyDead(CharacterController controller, PlayerMovementDay movement)
@@ -91,7 +147,6 @@ public class GameManager : MonoBehaviour
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
         Time.timeScale = 0f;
-        
         // TODO: AJOUTER L'ECRAN DE MORT
     }
 
@@ -113,7 +168,7 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
-    
+
     #region Player Management
 
     public bool IsPlayer(GameObject obj)
@@ -122,6 +177,6 @@ public class GameManager : MonoBehaviour
             return obj == player;
         return obj.CompareTag(playerTag);
     }
-    
+
     #endregion
 }

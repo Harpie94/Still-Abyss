@@ -1150,6 +1150,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1038861707}
+    - target: {fileID: 2586106478981927276, guid: 09ba5ebb68da83b41b89a890507d39bf, type: 3}
+      propertyPath: sunLight
+      value: 
+      objectReference: {fileID: 41152607}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
