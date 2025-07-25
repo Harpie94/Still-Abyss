@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Cam : MonoBehaviour
 {
-
-    [SerializeField] GameObject Cams;
-    [SerializeField] GameObject Playercam;
+    [SerializeField] RawImage output;
+    [SerializeField] RenderTexture cam1;
+    [SerializeField] RenderTexture cam2;
+    [SerializeField] RenderTexture cam3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Cams.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -21,15 +22,23 @@ public class Cam : MonoBehaviour
 
     }
 
-    public void ActivateCam()
+    public void ActivateCam1()
     {
-        Cams.SetActive(true);
-        Playercam.SetActive(false);
+        
+         output.texture = cam1;
+         
+        
     }
 
-    public void CloseCams()
+    public void ActivateCam2()
     {
-        Cams.SetActive(false);
-        Playercam.SetActive(true);
+        output.texture = cam2;
+
+    }
+
+    public void ActivateCam3()
+    {
+        output.texture = cam3;
+
     }
 }
