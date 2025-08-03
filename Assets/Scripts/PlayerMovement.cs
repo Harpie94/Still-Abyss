@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchMultiplier = 0.5f;
 
     [Header("Look Sensitivity")]
-    [SerializeField] private float lookSensitivity = 2f;
+    [SerializeField] private float lookSensitivity = 1f;
     [SerializeField] private float lookRange = 80f;
 
 
@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Linked Components")]
     [SerializeField] private Canvas TabletCanva;
+    public CinemachineCamera playerCamera;
 
 
     private InputAction moveAction;
@@ -31,15 +32,16 @@ public class PlayerMovement : MonoBehaviour
     private InputAction tabletToggle;
     private Vector2 moveInput;
     private Vector2 lookInput;
-
-
-    public CinemachineCamera playerCamera;
-    public float mouseYRotation;
+    
     private CharacterController characterController;
     private float originalHeight;
     private float crouchHeight = 1f;
+    
     private float gravity = -9.81f;
     private float verticalVelocity = 0f;
+    
+    public float mouseYRotation;
+
     public bool tabletState = false;
 
     private void Awake()
@@ -67,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
         if (TabletCanva != null)
         {
             TabletCanva.enabled = false;
@@ -100,39 +103,86 @@ public class PlayerMovement : MonoBehaviour
         tabletToggle.performed -= ctx => OnTabletToggle();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if (tabletState) return;
+
         moveInput = moveAction.ReadValue<Vector2>();
         lookInput = lookAction.ReadValue<Vector2>();
-        Move();
-        Rotation();
+
+        HandleMovement();
+        HandleRotation();
     }
+    
+    private void HandleMovement()
+    {
+        bool isCrouching = crouchAction.ReadValue<float>() > 0;
+        bool isSprinting = sprintAction.ReadValue<float>() > 0 && !isCrouching;
+        
+        characterController.height = isCrouching ? crouchHeight : originalHeight; // hauteur du corps
+        characterController.center = new Vector3(0, characterController.height / 2f, 0);
 
+        float speedMultiplier = GetSpeedMultiplier(isCrouching, isSprinting);
 
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        move *= walkSpeed * speedMultiplier;
 
+        // gravitÃ©
+        if (characterController.isGrounded)
+            verticalVelocity = 0f;
+        else
+            verticalVelocity += gravity * Time.deltaTime;
+
+        move.y = verticalVelocity;
+
+        characterController.Move(move * Time.deltaTime);
+    }
+    
+    private float GetSpeedMultiplier(bool isCrouching, bool isSprinting)
+    {
+        if (isCrouching) return crouchMultiplier;
+        if (isSprinting) return sprintMultiplier;
+        return 1f;
+    }
+    
+    private void HandleRotation()
+    {
+        float mouseX = lookInput.x * lookSensitivity;
+        float mouseY = lookInput.y * lookSensitivity;
+
+        transform.Rotate(0, mouseX, 0);
+
+        mouseYRotation -= mouseY;
+        mouseYRotation = Mathf.Clamp(mouseYRotation, -lookRange, lookRange);
+
+        playerCamera.transform.localRotation = Quaternion.Euler(mouseYRotation, 0, 0);
+    }
+    
     public void OnTabletToggle()
     {
         Debug.Log("Tablet toggle");
+        
         tabletState = !tabletState;
-        switch (tabletState)
-        {
-            case true:
-                ShowTablet();
-                break;
-            case false:
-                HideTablet();
-                break;
-        }
+        
+        if (tabletState)
+            ShowTablet();
+        else
+            HideTablet();
     }
 
     public void ShowTablet()
     {
         Debug.Log("Show tablet");
+        
         moveAction.Disable();
         lookAction.Disable();
         crouchAction.Disable();
+        sprintAction.Disable();
+        interactAction.Disable();
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
         if (TabletCanva != null)
         {
             TabletCanva.enabled = true;
@@ -146,11 +196,16 @@ public class PlayerMovement : MonoBehaviour
     public void HideTablet()
     {
         Debug.Log("Hide tablet");
+        
         moveAction.Enable();
         lookAction.Enable();
         crouchAction.Enable();
+        sprintAction.Enable();
+        interactAction.Enable();
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        
         if (TabletCanva != null)
         {
             TabletCanva.enabled = false;         
@@ -170,55 +225,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Player wants to interact");
         
-    }
-
-
-    private void Move()
-    {
-        bool isCrouching = crouchAction.ReadValue<float>() > 0;
-        bool isSprinting = sprintAction.ReadValue<float>() > 0 && !isCrouching;
-
-        // Ajuste la hauteur du CharacterController
-        characterController.height = isCrouching ? crouchHeight : originalHeight;
-
-        float speedMultiplier = 1f;
-        if (isCrouching)
-        {
-            speedMultiplier = crouchMultiplier;
-        }
-        else if (isSprinting)
-        {
-            speedMultiplier = sprintMultiplier;
-        }
-
-        float verticalSpeed = moveInput.y * walkSpeed * speedMultiplier;
-        float horizontalSpeed = moveInput.x * walkSpeed * speedMultiplier;
-
-        Vector3 move = new Vector3(horizontalSpeed, 0, verticalSpeed);
-        move = transform.rotation * move;
-
-        // Gestion de la gravité
-        if (characterController.isGrounded)
-        {
-            verticalVelocity = 0f;
-        }
-        else
-        {
-            verticalVelocity += gravity * Time.deltaTime;
-        }
-
-        move.y = verticalVelocity;
-
-        characterController.Move(move * Time.deltaTime);
-    }
-
-    private void Rotation()
-    {
-        float mouseXRotation = lookInput.x * lookSensitivity;
-        transform.Rotate(0, mouseXRotation, 0);
-        mouseYRotation -= lookInput.y * lookSensitivity;
-        mouseYRotation = Mathf.Clamp(mouseYRotation, -lookRange, lookRange);
-        playerCamera.transform.localRotation = Quaternion.Euler(mouseYRotation, 0, 0);
     }
 
 }
