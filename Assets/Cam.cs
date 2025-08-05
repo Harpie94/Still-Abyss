@@ -1,44 +1,49 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro; // <-- N'oublie pas ça
 
-
-public class Cam : MonoBehaviour
+public class CameraButtonGenerator : MonoBehaviour
 {
-    [SerializeField] RawImage output;
-    [SerializeField] RenderTexture cam1;
-    [SerializeField] RenderTexture cam2;
-    [SerializeField] RenderTexture cam3;
+    public GameObject buttonPrefab;         // Le prefab du bouton
+    public Transform layoutGroupParent;     // Le parent avec un LayoutGroup (Vertical/Grid/etc.)
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // Trouver toutes les caméras avec le tag "Camera"
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("Camera");
+
+        // Créer un bouton pour chaque caméra
+        foreach (GameObject cam in cameras)
+        {
+            GameObject newButton = Instantiate(buttonPrefab, layoutGroupParent);
+
+            // Récupérer le TMP_Text dans le bouton et mettre le nom de la caméra
+            TMP_Text tmpText = newButton.GetComponentInChildren<TMP_Text>();
+            if (tmpText != null)
+                tmpText.text = cam.name;
+
+            // Ajouter l'action au clic du bouton
+            newButton.GetComponent<Button>().onClick.AddListener(() => OnCameraButtonClicked(cam));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+   public void OnCameraButtonClicked(GameObject cam)
     {
+        Debug.Log("Caméra sélectionnée : " + cam.name);
 
-    }
+        // Désactiver toutes les caméras
+        foreach (GameObject otherCam in GameObject.FindGameObjectsWithTag("Camera"))
+        {
+            if (otherCam.transform.parent != null)
+                otherCam.transform.parent.gameObject.SetActive(false); // Désactive le parent
+            else
+                otherCam.SetActive(false);
+        }
 
-    public void ActivateCam1()
-    {
-        
-         output.texture = cam1;
-         
-        
-    }
-
-    public void ActivateCam2()
-    {
-        output.texture = cam2;
-
-    }
-
-    public void ActivateCam3()
-    {
-        output.texture = cam3;
-
+        // Activer celle cliquée
+        if (cam.transform.parent != null)
+            cam.transform.parent.gameObject.SetActive(true); // Active le parent
+        else
+            cam.SetActive(true);
     }
 }

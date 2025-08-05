@@ -120,12 +120,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1476255628536365508}
   - component: {fileID: 7731927539822814103}
-  - component: {fileID: 4146379205225384447}
   - component: {fileID: 3374044350930641763}
   - component: {fileID: 2299480139789753970}
   m_Layer: 0
-  m_Name: Cam
-  m_TagString: Untagged
+  m_Name: Cam 3
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +185,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: a6796ab8cdac7f043892a1540af128e9, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: 7c9164afb214e344f9eb6dd48260e8d4, type: 2}
   m_TargetDisplay: 1
   m_TargetEye: 3
   m_HDR: 1
@@ -196,14 +195,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4146379205225384447
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6337020292540760366}
-  m_Enabled: 1
 --- !u!114 &3374044350930641763
 MonoBehaviour:
   m_ObjectHideFlags: 0
