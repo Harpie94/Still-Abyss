@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem.Controls;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {

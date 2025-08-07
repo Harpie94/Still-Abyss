@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
             var controller = player.GetComponent<CharacterController>();
-            var movement = player.GetComponent<PlayerMovementDay>();
+            var movement = player.GetComponent<PlayerMovement>();
             switch (newState)
             {
                 case GameState.Paused:
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         Debug.Log($"État du jeu : {newState}");
     }
 
-    private void ApplyPause(CharacterController controller, PlayerMovementDay movement)
+    private void ApplyPause(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         // TODO: AJOUTER LE MENU PAUSE
     }
 
-    private void ApplyDead(CharacterController controller, PlayerMovementDay movement)
+    private void ApplyDead(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         // TODO: AJOUTER L'ECRAN DE MORT
     }
 
-    private void ApplyResume(CharacterController controller, PlayerMovementDay movement)
+    private void ApplyResume(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = true;
         if (movement != null) movement.enabled = true;
