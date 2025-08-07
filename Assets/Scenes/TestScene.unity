@@ -423,6 +423,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1656171492145686964, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -959
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812296698220589295, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
+      propertyPath: m_RenderShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812296698220589295, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
+      propertyPath: m_RequiresDepthTextureOption
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812296698220589295, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
+      propertyPath: m_RequiresOpaqueTextureOption
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3296603675521792386, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
       propertyPath: Player
       value: 
@@ -510,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 8374787991201526840, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
       propertyPath: m_Name
       value: Tablet
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027052218935472230, guid: 9b6e3b0a3f382c04783296d45b82b69e, type: 3}
+      propertyPath: m_ClearFlags
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
