@@ -4,6 +4,9 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     #region Variables
+    
+    [Header("UI Management")]
+    [SerializeField] private Canvas tabletCanvas;
 
     public static GameManager Instance;
 
@@ -34,6 +37,60 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    #endregion
+    
+    #region UI Management
+    
+    public bool IsTabletOpen { get; private set; } = false;
+
+    public void ToggleTablet()
+    {
+        IsTabletOpen = !IsTabletOpen;
+
+        if (IsTabletOpen)
+        {
+            ShowTablet();
+        }
+        else
+        {
+            HideTablet();
+        }
+    }
+
+    private void ShowTablet()
+    {
+        if (tabletCanvas != null)
+            tabletCanvas.enabled = true;
+        
+        SetCursorLockedState(false); // Unlock cursor when showing tablet
+        
+        // Deactivate player controls
+        if (player != null)
+        {
+            var movement = player.GetComponent<PlayerMovement>();
+            if (movement != null)
+                movement.SetControlsEnabled(false);
+        }
+    }
+
+    private void HideTablet()
+    {
+        if (tabletCanvas != null)
+            tabletCanvas.enabled = false;
+        
+        SetCursorLockedState(true); // Lock cursor when hiding tablet
+        
+        // Reactivate player controls
+        if (player != null)
+        {
+            var movement = player.GetComponent<PlayerMovement>();
+            if (movement != null)
+                movement.SetControlsEnabled(true);
+        }
+            
+
     }
     
     #endregion
@@ -79,6 +136,7 @@ public class GameManager : MonoBehaviour
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
         Time.timeScale = 0f;
+        SetCursorLockedState(false); // Unlock cursor when paused
         // TODO: AJOUTER LE MENU PAUSE
     }
 
@@ -87,6 +145,7 @@ public class GameManager : MonoBehaviour
         if (controller != null) controller.enabled = false;
         if (movement != null) movement.enabled = false;
         Time.timeScale = 0f;
+        SetCursorLockedState(false); // Unlock cursor when dead
         // TODO: AJOUTER L'ECRAN DE MORT
     }
 
@@ -95,6 +154,7 @@ public class GameManager : MonoBehaviour
         if (controller != null) controller.enabled = true;
         if (movement != null) movement.enabled = true;
         Time.timeScale = 1f;
+        SetCursorLockedState(true); // Lock cursor when resuming
     }
 
     void OnEnable()
@@ -105,6 +165,20 @@ public class GameManager : MonoBehaviour
     void OnDisable()
     {
         OnGameStateChanged -= HandleGameStateChange;
+    }
+    
+    public void SetCursorLockedState(bool locked)
+    {
+        if (locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     #endregion

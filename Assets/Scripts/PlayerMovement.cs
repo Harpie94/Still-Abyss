@@ -68,8 +68,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("Move action found:");
         }
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        // Lock and hide the cursor at the start
+        GameManager.Instance.SetCursorLockedState(true);
         
         if (TabletCanva != null)
         {
@@ -163,57 +163,26 @@ public class PlayerMovement : MonoBehaviour
     {
         Debug.Log("Tablet toggle");
         
-        tabletState = !tabletState;
-        
-        if (tabletState)
-            ShowTablet();
-        else
-            HideTablet();
+        GameManager.Instance.ToggleTablet();
     }
 
-    public void ShowTablet()
+    public void SetControlsEnabled(bool enabled)
     {
-        Debug.Log("Show tablet");
-        
-        moveAction.Disable();
-        lookAction.Disable();
-        crouchAction.Disable();
-        sprintAction.Disable();
-        interactAction.Disable();
-        
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        
-        if (TabletCanva != null)
+        if (enabled)
         {
-            TabletCanva.enabled = true;
+            moveAction.Enable();
+            lookAction.Enable();
+            sprintAction.Enable();
+            crouchAction.Enable();
+            interactAction.Enable();
         }
         else
         {
-            Debug.LogWarning("TabletCanva is not assigned or is null.");
-        }
-    }
-
-    public void HideTablet()
-    {
-        Debug.Log("Hide tablet");
-        
-        moveAction.Enable();
-        lookAction.Enable();
-        crouchAction.Enable();
-        sprintAction.Enable();
-        interactAction.Enable();
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        
-        if (TabletCanva != null)
-        {
-            TabletCanva.enabled = false;         
-        }
-        else
-        {
-            Debug.LogWarning("TabletCanva is not assigned or is null.");
+            moveAction.Disable();
+            lookAction.Disable();
+            sprintAction.Disable();
+            crouchAction.Disable();
+            interactAction.Disable();
         }
     }
 
