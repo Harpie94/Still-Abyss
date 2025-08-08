@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction sprintAction;
     private InputAction interactAction;
     private InputAction tabletToggle;
+    private InputAction pauseAction;
     private Vector2 moveInput;
     private Vector2 lookInput;
     
@@ -62,11 +63,16 @@ public class PlayerMovement : MonoBehaviour
         crouchAction = PlayerActionMap.FindAction("Crouch");
         interactAction = PlayerActionMap.FindAction("Interact");
         tabletToggle = PlayerActionMap.FindAction("Tablet");
+        pauseAction = PlayerActionMap.FindAction("Pause");
 
         if (moveAction == null)
         {
             Debug.LogError("Move action found:");
         }
+
+        // Ensure the pause action can be triggered even if the game is paused
+        if (pauseAction != null)
+            pauseAction.wantsInitialStateCheck = true; 
 
         // Lock and hide the cursor at the start
         GameManager.Instance.SetCursorLockedState(true);
@@ -91,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
         interactAction.started += OnInteractPerformed;
         tabletToggle.Enable();
         tabletToggle.performed += ctx => OnTabletToggle();
+        pauseAction.Enable();
+        pauseAction.performed += ctx => OnPauseToggle();
     }
     private void OnDisable()
     {
@@ -102,11 +110,15 @@ public class PlayerMovement : MonoBehaviour
         interactAction.started -= OnInteractPerformed;
         tabletToggle.Disable();
         tabletToggle.performed -= ctx => OnTabletToggle();
+        pauseAction.Disable();
+        pauseAction.performed -= ctx => OnPauseToggle();
+        
     }
 
     private void Update()
     {
-        if (tabletState) return;
+        if (tabletState || GameManager.Instance.CurrentState == GameManager.GameState.Paused)
+            return;
 
         moveInput = moveAction.ReadValue<Vector2>();
         lookInput = lookAction.ReadValue<Vector2>();
@@ -166,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         GameManager.Instance.ToggleTablet();
     }
 
-    public void SetControlsEnabled(bool enabled)
+    public void SetControlsEnabledUsingTablet(bool enabled)
     {
         if (enabled)
         {
@@ -184,6 +196,12 @@ public class PlayerMovement : MonoBehaviour
             crouchAction.Disable();
             interactAction.Disable();
         }
+    }
+
+    private void OnPauseToggle()
+    {
+        Debug.Log("Pause Toggle");
+        GameManager.Instance.TogglePause();
     }
 
     public bool GetTabletState(bool state)

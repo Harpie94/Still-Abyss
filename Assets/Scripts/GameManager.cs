@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             var movement = player.GetComponent<PlayerMovement>();
             if (movement != null)
-                movement.SetControlsEnabled(false);
+                movement.SetControlsEnabledUsingTablet(false);
         }
     }
 
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         {
             var movement = player.GetComponent<PlayerMovement>();
             if (movement != null)
-                movement.SetControlsEnabled(true);
+                movement.SetControlsEnabledUsingTablet(true);
         }
             
 
@@ -130,11 +130,22 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log($"État du jeu : {newState}");
     }
+    
+    public void TogglePause()
+    {
+        if (CurrentState == GameState.Paused)
+        {
+            SetGameState(GameState.InGame);
+        }
+        else if (CurrentState == GameState.InGame)
+        {
+            SetGameState(GameState.Paused);
+        }
+    }
 
     private void ApplyPause(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = false;
-        if (movement != null) movement.enabled = false;
         Time.timeScale = 0f;
         SetCursorLockedState(false); // Unlock cursor when paused
         // TODO: AJOUTER LE MENU PAUSE
@@ -143,7 +154,7 @@ public class GameManager : MonoBehaviour
     private void ApplyDead(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = false;
-        if (movement != null) movement.enabled = false;
+        if (movement != null) movement.enabled = false; // Disable player controls
         Time.timeScale = 0f;
         SetCursorLockedState(false); // Unlock cursor when dead
         // TODO: AJOUTER L'ECRAN DE MORT
@@ -152,7 +163,6 @@ public class GameManager : MonoBehaviour
     private void ApplyResume(CharacterController controller, PlayerMovement movement)
     {
         if (controller != null) controller.enabled = true;
-        if (movement != null) movement.enabled = true;
         Time.timeScale = 1f;
         SetCursorLockedState(true); // Lock cursor when resuming
     }
