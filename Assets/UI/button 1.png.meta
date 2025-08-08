@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 23bb477260296c347934349ac186cefe
+guid: 1eddefc4be36fc2439b54fa1480800e9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -110,23 +110,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button_hover_0
+      name: button 1_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 196
-        width: 395
-        height: 208
+        x: 80
+        y: 176
+        width: 445
+        height: 249
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 15, y: 15, z: 15, w: 15}
+      pivot: {x: 0, y: 0}
+      border: {x: 30, y: 30, z: 30, w: 30}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e66b59384139d7a448436eb4e9170324
-      internalID: -1605186792
+      spriteID: 75e0f4b14f3bc5b498babe5cba1233c0
+      internalID: -1844885639
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 87cd1af05f141fe419adc92f3e8cf2a4
+    spriteID: 8b4d5b8161fe20144a0dfbfa52caa9a2
     internalID: 0
     vertices: []
     indices: 
@@ -145,7 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      button_hover_0: -1605186792
+      button 1_0: -1844885639
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
