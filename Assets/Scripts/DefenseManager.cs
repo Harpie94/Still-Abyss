@@ -18,18 +18,24 @@ public class DefenseManager : MonoBehaviour
     10 : o2
     11 : moonpool */
 
+    public GameObject[] iconRooms = new GameObject[12];
+
     void Start()
     {
         for (int i = 0; i < 12; i++)
         {
             roomShutterState[i] = false;
+            iconRooms[i].SetActive(false);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            ShutterTrigger(4);
+        }
     }
 
     bool GetShutterState(int room)
@@ -45,15 +51,29 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    void ShutterTrigger(int room)
+    public void ShutterTrigger(int room)
     {
+        Debug.Log("activate");
         if (room < roomShutterState.Length)
         {
             roomShutterState[room] = !roomShutterState[room];
+            RoomIconTrigger(room);
         }
         else
         {
             Debug.Log("Int too high, no room found at this index");
+        }
+    }
+
+    void RoomIconTrigger(int room)
+    {
+        if (roomShutterState[room])
+        {
+            iconRooms[room].SetActive(true);
+        }
+        else
+        {
+            iconRooms[room].SetActive(false);
         }
     }
 }
