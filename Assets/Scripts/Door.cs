@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     public GameObject leftPart;
     public GameObject rightPart;
     public bool isOpen { get; private set; }
+    public bool front;
 
     void Start()
     {
@@ -16,30 +17,10 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            OpenDoor();
-        }
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            CloseDoor();
-        }
+
     }
 
-    void OpenDoor()
-    {
-        if (!isOpen)
-        {
-            StartCoroutine(DoorMovement(-1));
-            isOpen = true;
-        }
-        else
-        {
-            Debug.Log("Door already open");
-        }
-    }
-
-    void CloseDoor()
+    public void DoorTrigger()
     {
         if (isOpen)
         {
@@ -48,7 +29,8 @@ public class Door : MonoBehaviour
         }
         else
         {
-            Debug.Log("Door already closed");
+            StartCoroutine(DoorMovement(-1));
+            isOpen = true;
         }
     }
 
@@ -58,11 +40,25 @@ public class Door : MonoBehaviour
         for (int i = 0; i < 20; i++)
         {
             Vector3 leftPosition = leftPart.transform.position;
+            if (front)
+            {
             leftPosition.x += distancePerTick*direction;
+            }
+            else
+            {
+            leftPosition.z += distancePerTick*direction;
+            }
             leftPart.transform.position = leftPosition;
 
             Vector3 rightPosition = rightPart.transform.position;
+            if (front)
+            {
             rightPosition.x -= distancePerTick*direction;
+            }
+            else
+            {
+            rightPosition.z -= distancePerTick*direction;
+            }
             rightPart.transform.position = rightPosition;
             yield return new WaitForSeconds(0.05f);
         }
