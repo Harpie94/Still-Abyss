@@ -8,6 +8,8 @@ public class EnemyFOV : MonoBehaviour
     public bool isChasingPlayer = false;
     public bool isPlayerInSight = false;
 
+    public Vector3 lastKnownPlayerPosition; // Position du joueur vu pour la dernière fois
+
     public LayerMask targetMask; // Layer mask for targets (e.g., player)
     public LayerMask obstacleMask; // Layer mask for obstacles (e.g., walls)
 
@@ -51,6 +53,7 @@ public class EnemyFOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
                 {
                     PlayerDetected();
+                    lastKnownPlayerPosition = Player.transform.position; // Sauvegarde la position
                     return;
                 }
             }
@@ -58,8 +61,10 @@ public class EnemyFOV : MonoBehaviour
         isPlayerInSight = false;
     }
 
-    void PlayerDetected()
+    public void PlayerDetected()
     {
         isPlayerInSight = true;
     }
 }
+
+
