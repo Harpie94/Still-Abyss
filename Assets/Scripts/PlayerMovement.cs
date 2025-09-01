@@ -227,4 +227,56 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    void OnTriggerEnter(Collider collider)
+    {
+        switch (collider.tag)
+        {
+            case "deck":
+                DefenseManager.SetActualRoom(0);
+                break;
+            case "cctv":
+                DefenseManager.SetActualRoom(1);
+                break;
+            case "storage":
+                DefenseManager.SetActualRoom(2);
+                break;
+            case "restroom":
+                DefenseManager.SetActualRoom(3);
+                break;
+            case "lounge":
+                DefenseManager.SetActualRoom(4);
+                break;
+            case "lab":
+                DefenseManager.SetActualRoom(5);
+                break;
+            case "kitchen":
+                DefenseManager.SetActualRoom(6);
+                break;
+            case "bedroom":
+                DefenseManager.SetActualRoom(7);
+                break;
+            case "sonar":
+                DefenseManager.SetActualRoom(8);
+                break;
+            case "gear":
+                DefenseManager.SetActualRoom(9);
+                break;
+            case "o2":
+                DefenseManager.SetActualRoom(10);
+                break;
+            case "moonpool":
+                DefenseManager.SetActualRoom(11);
+                break;
+            default:
+                Debug.Log("failed");
+                break;
+        }
+        //if (collider.CompareTag("deck"))
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        DefenseManager.SetActualRoom(12);
+    }
+
 }
