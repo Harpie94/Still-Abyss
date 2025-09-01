@@ -9,6 +9,7 @@ public class EnemyFOV : MonoBehaviour
     public bool isPlayerInSight = false;
 
     public Vector3 lastKnownPlayerPosition; // Position du joueur vu pour la dernière fois
+    public Vector3 secondPlayerPosition;    // Nouvelle position du joueur dans le rayon
 
     public LayerMask targetMask; // Layer mask for targets (e.g., player)
     public LayerMask obstacleMask; // Layer mask for obstacles (e.g., walls)
@@ -45,6 +46,8 @@ public class EnemyFOV : MonoBehaviour
         // Vérifie si le joueur est dans le rayon de vision
         if (distanceToPlayer <= viewRadius)
         {
+
+            secondPlayerPosition = Player.transform.position;
             // Vérifie si le joueur est dans l'angle de vision
             float angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
             if (angleToPlayer < viewAngle / 2f)
