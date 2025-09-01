@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7624220787524459157}
   - component: {fileID: 921392104841925141}
   - component: {fileID: 5711270105591461225}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RightPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +117,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7841556638342870938}
-  - component: {fileID: 3849065930795567513}
-  m_Layer: 0
+  - component: {fileID: 983099477128963125}
+  m_Layer: 8
   m_Name: SideDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ Transform:
   - {fileID: 966601176287739895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3849065930795567513
+--- !u!114 &983099477128963125
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,11 +151,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906843791000525650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e43f725f662ab245aed19f8a4dffc38, type: 3}
+  m_Script: {fileID: 11500000, guid: 77a49c630968c5f4aac60bf2186b3af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftPart: {fileID: 5434378503468826660}
   rightPart: {fileID: 1156923152556596803}
+  front: 0
 --- !u!1 &5434378503468826660
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +169,7 @@ GameObject:
   - component: {fileID: 4340722760844274073}
   - component: {fileID: 552829444665331270}
   - component: {fileID: 4039223369426423161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeftPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
