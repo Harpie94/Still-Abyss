@@ -17,6 +17,8 @@ TagManager:
   - gear
   - o2
   - moonpool
+  - doorbutton1
+  - doorbutton2
   layers:
   - Default
   - TransparentFX
