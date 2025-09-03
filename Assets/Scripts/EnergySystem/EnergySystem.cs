@@ -6,7 +6,8 @@ public class EnergySystem : MonoBehaviour
     [SerializeField] private float maxEnergy = 100f;
     [SerializeField] private float energyDrainRate = 5f;
     [SerializeField] private float extraEnergyDrain = 0f;
-    [SerializeField] private float energyRechargeRate = 10f;
+    [SerializeField] private float dayRechargeRate = 10f;
+    [SerializeField] private float nightRechargeRate = 0f;
     [SerializeField] private float lowEnergyThreshold = 30f;
     [SerializeField] private float criticalEnergyThreshold = 10f;
     [SerializeField] private bool useMaxEnergyAtStart = true;
@@ -35,14 +36,8 @@ public class EnergySystem : MonoBehaviour
             return;
         }
 
-        if (isRecharging)
-        {
-            RechargeEnergy();
-        }
-        else
-        {
-            DrainEnergy();
-        }
+        RechargeEnergy();
+        DrainEnergy();
     }
     //permet de rajouter du drain pour la conso energy
     public void AddExtraDrain(float amount)
@@ -68,7 +63,14 @@ public class EnergySystem : MonoBehaviour
     {
         if (CurrentEnergy < maxEnergy)
         {
-            CurrentEnergy += energyRechargeRate * Time.deltaTime;
+            if (DayNightScript.isDay)
+            {
+                CurrentEnergy += dayRechargeRate * Time.deltaTime;
+            }
+            else
+            {
+                CurrentEnergy += nightRechargeRate * Time.deltaTime;
+            }
             CurrentEnergy = Mathf.Clamp(CurrentEnergy, 0f, maxEnergy);
         }
     }
@@ -119,5 +121,21 @@ public class EnergySystem : MonoBehaviour
     public bool IsCriticalEnergy()
     {
         return CurrentEnergy <= criticalEnergyThreshold;
+    }
+
+    //les fonctions pour upgrade ce qui est lié à l'énergie
+    void UpgradeMaxEnergy(float upgrade)
+    {
+        maxEnergy = upgrade;
+    }
+
+    void UpgradeDayRecharge(float upgrade)
+    {
+        dayRechargeRate = upgrade;
+    }
+
+    void UpgradeNightRecharge(float upgrade)
+    {
+        nightRechargeRate = upgrade;
     }
 }

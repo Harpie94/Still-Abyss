@@ -6,7 +6,7 @@ public class DayNightScript : MonoBehaviour
     public Light sun;
     public float cycleDurationMinutes = 1f;
     public int totalCycles = 5;
-    public bool isDay = true;
+    public static bool isDay = true;
     public bool InfiniteCycle = false;
     public TMP_Text timerText;
 
@@ -34,7 +34,7 @@ public class DayNightScript : MonoBehaviour
         float startAngle, endAngle;
         float startHour, endHour;
 
-        //Ce qui défini le début et la fin des cycles jour et nuit selon les angles et les heures
+        //Ce qui dï¿½fini le dï¿½but et la fin des cycles jour et nuit selon les angles et les heures
         if (isDay)
         {
             startAngle = 0f;
