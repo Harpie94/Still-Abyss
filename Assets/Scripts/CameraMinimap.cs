@@ -5,6 +5,7 @@ public class CameraMinimap : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject Player;
     public float distanceFromPlayer = 40f;
+    public bool followPlayer = true;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class CameraMinimap : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Player != null)
+        if (Player != null && followPlayer)
         {
             transform.position = new Vector3(Player.transform.position.x, distanceFromPlayer, Player.transform.position.z);
         }
