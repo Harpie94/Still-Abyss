@@ -4,7 +4,19 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - RepairableObject
+  - Camera
+  - cctv
+  - deck
+  - storage
+  - restroom
+  - lounge
+  - lab
+  - kitchen
+  - bedroom
+  - sonar
+  - gear
+  - o2
+  - moonpool
   layers:
   - Default
   - TransparentFX
@@ -12,9 +24,9 @@ TagManager:
   - 
   - Water
   - UI
-  - PlayerInvisible
-  - MinimapInvisible
-  - Wall
+  - 
+  - MinimapCamOnly
+  - PlayerCamOnly
   - 
   - 
   - 

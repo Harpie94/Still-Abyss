@@ -248,34 +248,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Trigger pour détecter les objets réparables à proximité
-    private void OnTriggerEnter(Collider other)
-    {
-        // Log pour le débogage
-        Debug.Log($"OnTriggerEnter: {other.name}");
-        RepairableObject repairable = other.GetComponent<RepairableObject>();
-        if (repairable != null && !nearbyRepairableObjects.Contains(repairable))
-        {
-            nearbyRepairableObjects.Add(repairable);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        RepairableObject repairable = other.GetComponent<RepairableObject>();
-        if (repairable != null && nearbyRepairableObjects.Contains(repairable))
-        {
-            nearbyRepairableObjects.Remove(repairable);
-            
-            // Si c'était l'objet actuellement sélectionné, le désélectionner
-            if (currentRepairableObject == repairable)
-            {
-                currentRepairableObject = null;
-                // TODO: Cacher UI d'interaction
-            }
-        }
-    }
-
     private void OnInteractCanceled(InputAction.CallbackContext ctx)
     {
         if (isRepairing && currentRepairableObject != null)
@@ -365,4 +337,82 @@ public class PlayerMovement : MonoBehaviour
     {
         return tabletState;
     }
+    
+
+    private void OnInteractPerformed(InputAction.CallbackContext ctx)
+    {
+        Debug.Log("Player wants to interact");
+        
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log($"OnTriggerEnter: {collider.name}");
+        RepairableObject repairable = collider.GetComponent<RepairableObject>();
+        if (repairable != null && !nearbyRepairableObjects.Contains(repairable))
+        {
+            nearbyRepairableObjects.Add(repairable);
+        }
+        switch (collider.tag)
+        {
+            case "deck":
+                DefenseManager.SetActualRoom(0);
+                break;
+            case "cctv":
+                DefenseManager.SetActualRoom(1);
+                break;
+            case "storage":
+                DefenseManager.SetActualRoom(2);
+                break;
+            case "restroom":
+                DefenseManager.SetActualRoom(3);
+                break;
+            case "lounge":
+                DefenseManager.SetActualRoom(4);
+                break;
+            case "lab":
+                DefenseManager.SetActualRoom(5);
+                break;
+            case "kitchen":
+                DefenseManager.SetActualRoom(6);
+                break;
+            case "bedroom":
+                DefenseManager.SetActualRoom(7);
+                break;
+            case "sonar":
+                DefenseManager.SetActualRoom(8);
+                break;
+            case "gear":
+                DefenseManager.SetActualRoom(9);
+                break;
+            case "o2":
+                DefenseManager.SetActualRoom(10);
+                break;
+            case "moonpool":
+                DefenseManager.SetActualRoom(11);
+                break;
+            default:
+                Debug.Log("failed");
+                break;
+        }
+        //if (collider.CompareTag("deck"))
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        RepairableObject repairable = collider.GetComponent<RepairableObject>();
+        if (repairable != null && nearbyRepairableObjects.Contains(repairable))
+        {
+            nearbyRepairableObjects.Remove(repairable);
+            
+            // Si c'était l'objet actuellement sélectionné, le désélectionner
+            if (currentRepairableObject == repairable)
+            {
+                currentRepairableObject = null;
+                // TODO: Cacher UI d'interaction
+            }
+        }
+        DefenseManager.SetActualRoom(12);
+    }
+
 }
