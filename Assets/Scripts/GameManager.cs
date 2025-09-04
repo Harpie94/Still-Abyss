@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     [Header("Gestion des salles")]
     [SerializeField] private List<Rooms> rooms = new List<Rooms>();
     private readonly Dictionary<Rooms, List<RepairableObject>> repairablesByRoom = new Dictionary<Rooms, List<RepairableObject>>();
+    
+    [Header("Defences Management")]
+    [SerializeField] private string defenceObjectTag = "DefenceObject";
+    private DefenseManager defenseManager;
 
     public static GameManager Instance;
 
@@ -61,9 +65,34 @@ public class GameManager : MonoBehaviour
     {
         InitializeRooms();
         InitializeRepairableObjects();
+        InitializeDefenceObjects();
         StartDamageSystem();
     }
 
+    #endregion
+    
+    #region Defence Management
+
+    private void InitializeDefenceObjects()
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(defenceObjectTag);
+
+        if (objects.Length > 0)
+        {
+            defenseManager = objects[0].GetComponent<DefenseManager>();
+            if (defenseManager == null)
+            {
+                Debug.LogWarning("Le composant DefenseManager est introuvable sur l'objet avec le tag 'DefenceObject'.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Aucun objet trouvé avec le tag 'DefenceObject'.");
+        }
+        
+        
+    }
+    
     #endregion
 
     #region Damage Management
@@ -305,13 +334,13 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         OnGameStateChanged += HandleGameStateChange;
-        Rooms.OnCriticalDamageReached += CriticalDamage;
+        Rooms.OnRoomAsTakenDamage += UpdateRoomDamageUI;
     }
 
     void OnDisable()
     {
         OnGameStateChanged -= HandleGameStateChange;
-        Rooms.OnCriticalDamageReached -= CriticalDamage;
+        Rooms.OnRoomAsTakenDamage -= UpdateRoomDamageUI;
     }
 
     public void SetCursorLockedState(bool locked)
@@ -350,8 +379,44 @@ public class GameManager : MonoBehaviour
             rooms = FindObjectsOfType<Rooms>().ToList();
     }
 
-    public void CriticalDamage(Rooms room)
+    public void UpdateRoomDamageUI(Rooms room)
     {
+        if (room == null) return;
+        
+        int damageTier = room.GetCurrentDamageTier();
+        // Mettre à jour l'interface utilisateur pour la salle endommagée selon le "damage tier"
+        switch (damageTier)
+        {
+            case 0:
+                // UI pour état intact
+                defenseManager.MinimapModifier(room.RoomsID, damageTier);
+                Debug.Log($"Salle '{room.RoomName}' est intacte.");
+                break;
+            case 1:
+                // UI pour dégâts mineurs
+                defenseManager.MinimapModifier(room.RoomsID, damageTier);
+                Debug.Log($"Salle '{room.RoomName}' a des dégâts mineurs.");
+                break;
+            case 2:
+                // UI pour dégâts modérés
+                defenseManager.MinimapModifier(room.RoomsID, damageTier);
+                Debug.Log($"Salle '{room.RoomName}' a des dégâts modérés.");
+                break;
+            case 3:
+                // UI pour dégâts sévères
+                defenseManager.MinimapModifier(room.RoomsID, damageTier);
+                Debug.Log($"Salle '{room.RoomName}' a des dégâts sévères.");
+                break;
+            case 4:
+                // UI pour état détruit
+                defenseManager.MinimapModifier(room.RoomsID, damageTier);
+                Debug.Log($"Salle '{room.RoomName}' est détruite.");
+                break;
+            default:
+                Debug.Log($"Salle '{room.RoomName}' a un état de dommage inconnu.");
+                break;
+        }
+        
         Debug.LogWarning($"La salle '{room.RoomName}' a atteint un état de dommage critique !");
     }
 

@@ -67,7 +67,7 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    void MinimapModifier(int room, int modifier)
+    public void MinimapModifier(int room, int modifier)
     {
         switch (modifier)
         {
