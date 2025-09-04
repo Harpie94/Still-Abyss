@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9179131020981508789}
   - component: {fileID: 1785625533360393791}
   - component: {fileID: 2901259243682097894}
+  - component: {fileID: 80771610752905911}
   m_Layer: 0
   m_Name: Lab
   m_TagString: Untagged
@@ -40446,6 +40447,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &80771610752905911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392638068863892896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1253136522227508733
 GameObject:
   m_ObjectHideFlags: 0
@@ -49880,6 +49901,7 @@ GameObject:
   - component: {fileID: 6060448037105171296}
   - component: {fileID: 3639566087205101963}
   - component: {fileID: 4086847777694358763}
+  - component: {fileID: 8808137546796416796}
   m_Layer: 0
   m_Name: Storage
   m_TagString: Untagged
@@ -70086,6 +70108,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8808137546796416796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487636590515476294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1758068916211241353
 GameObject:
   m_ObjectHideFlags: 0
@@ -70100,6 +70142,7 @@ GameObject:
   - component: {fileID: 7964793770817019260}
   - component: {fileID: 3609276487181075837}
   - component: {fileID: 664234576125286580}
+  - component: {fileID: 6426280682569560446}
   m_Layer: 0
   m_Name: Hallway Diving / O2
   m_TagString: Untagged
@@ -72906,6 +72949,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6426280682569560446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758068916211241353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2082132467985886425
 GameObject:
   m_ObjectHideFlags: 0
@@ -72920,6 +72983,7 @@ GameObject:
   - component: {fileID: 4377467198408932923}
   - component: {fileID: 3863690973316348805}
   - component: {fileID: 8143335900251778982}
+  - component: {fileID: 1013243598577404959}
   m_Layer: 0
   m_Name: Diving Gear
   m_TagString: Untagged
@@ -84612,6 +84676,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1013243598577404959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082132467985886425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2294262821581268872
 GameObject:
   m_ObjectHideFlags: 0
@@ -84626,6 +84710,7 @@ GameObject:
   - component: {fileID: 5377015464551675613}
   - component: {fileID: 8529068271474469117}
   - component: {fileID: 6309935329941533809}
+  - component: {fileID: 2247995755300493968}
   m_Layer: 0
   m_Name: Hallway Sonar / O2 / Moonpool
   m_TagString: Untagged
@@ -107658,6 +107743,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2247995755300493968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2294262821581268872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2709100589646260153
 GameObject:
   m_ObjectHideFlags: 0
@@ -107672,6 +107777,7 @@ GameObject:
   - component: {fileID: 6935346404341133697}
   - component: {fileID: 5249519000620521695}
   - component: {fileID: 6009257726434122436}
+  - component: {fileID: 5562383617833434679}
   m_Layer: 0
   m_Name: Sonar
   m_TagString: Untagged
@@ -117444,6 +117550,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &5562383617833434679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2709100589646260153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4060036219806065596
 GameObject:
   m_ObjectHideFlags: 0
@@ -117458,6 +117584,7 @@ GameObject:
   - component: {fileID: 6525502239730967333}
   - component: {fileID: 7306851691238538767}
   - component: {fileID: 8790422169321466226}
+  - component: {fileID: 7800482306050805663}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -118477,6 +118604,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &7800482306050805663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060036219806065596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4072374660191875791
 GameObject:
   m_ObjectHideFlags: 0
@@ -118491,6 +118638,7 @@ GameObject:
   - component: {fileID: 1573001155089814995}
   - component: {fileID: 7934074665086952362}
   - component: {fileID: 2840716332150837127}
+  - component: {fileID: 2261890731707935366}
   m_Layer: 0
   m_Name: Deck
   m_TagString: Untagged
@@ -151625,6 +151773,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2261890731707935366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072374660191875791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4223050370629851445
 GameObject:
   m_ObjectHideFlags: 0
@@ -151639,6 +151807,7 @@ GameObject:
   - component: {fileID: 6796606447588878041}
   - component: {fileID: 6501748227239961651}
   - component: {fileID: 5952215295208582178}
+  - component: {fileID: 6218022464347272487}
   m_Layer: 0
   m_Name: Restroom
   m_TagString: Untagged
@@ -161399,6 +161568,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6218022464347272487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4223050370629851445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5354597881182137668
 GameObject:
   m_ObjectHideFlags: 0
@@ -161413,6 +161602,7 @@ GameObject:
   - component: {fileID: 3822494617963128346}
   - component: {fileID: 2942296381267030499}
   - component: {fileID: 1286493720856102702}
+  - component: {fileID: 6940850111446742919}
   m_Layer: 0
   m_Name: Kitchen / Living Space
   m_TagString: Untagged
@@ -184511,6 +184701,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6940850111446742919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354597881182137668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5361392148452660080
 GameObject:
   m_ObjectHideFlags: 0
@@ -184525,6 +184735,7 @@ GameObject:
   - component: {fileID: 7204079030919741485}
   - component: {fileID: 8702031481469587289}
   - component: {fileID: 6788819009257461672}
+  - component: {fileID: 1802040748347726791}
   m_Layer: 0
   m_Name: Hallway Kitchen / Lab
   m_TagString: Untagged
@@ -187751,6 +187962,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1802040748347726791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361392148452660080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5424188630784809677
 GameObject:
   m_ObjectHideFlags: 0
@@ -187765,6 +187996,7 @@ GameObject:
   - component: {fileID: 7674935553027523295}
   - component: {fileID: 3303745479988158444}
   - component: {fileID: 7946706625185728190}
+  - component: {fileID: 6154136881459973170}
   m_Layer: 0
   m_Name: Hallway Storage / Lounge / Diving / Kitchen / Sonar
   m_TagString: Untagged
@@ -218069,6 +218301,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6154136881459973170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424188630784809677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5471793000251420604
 GameObject:
   m_ObjectHideFlags: 0
@@ -218083,6 +218335,7 @@ GameObject:
   - component: {fileID: 8846157742894245399}
   - component: {fileID: 1427756122830560499}
   - component: {fileID: 7782052590310710319}
+  - component: {fileID: 58567008606514901}
   m_Layer: 0
   m_Name: O2
   m_TagString: Untagged
@@ -227489,6 +227742,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &58567008606514901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471793000251420604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5541186108617923727
 GameObject:
   m_ObjectHideFlags: 0
@@ -227536,6 +227809,7 @@ GameObject:
   - component: {fileID: 3892281910679516068}
   - component: {fileID: 6359603111377244668}
   - component: {fileID: 6467551557707982191}
+  - component: {fileID: 6238594078035147117}
   m_Layer: 0
   m_Name: Lounge
   m_TagString: Untagged
@@ -253154,6 +253428,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6238594078035147117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158471118827009595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6533098745918633476
 GameObject:
   m_ObjectHideFlags: 0
@@ -253168,6 +253462,7 @@ GameObject:
   - component: {fileID: 4779900066756193365}
   - component: {fileID: 2426029244512477870}
   - component: {fileID: 7725181952036059641}
+  - component: {fileID: 4636342374561941798}
   m_Layer: 0
   m_Name: Hallway Bedroom / Lab
   m_TagString: Untagged
@@ -263114,6 +263409,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4636342374561941798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533098745918633476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6766832429036857229
 GameObject:
   m_ObjectHideFlags: 0
@@ -263128,6 +263443,7 @@ GameObject:
   - component: {fileID: 4209991090522942367}
   - component: {fileID: 2494619273559846582}
   - component: {fileID: 9184456134667916115}
+  - component: {fileID: 3439149018157510482}
   m_Layer: 0
   m_Name: Bedroom
   m_TagString: Untagged
@@ -273254,6 +273570,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3439149018157510482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6766832429036857229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7029025792380993847
 GameObject:
   m_ObjectHideFlags: 0
@@ -273268,6 +273604,7 @@ GameObject:
   - component: {fileID: 473596920486877877}
   - component: {fileID: 7412418524856611071}
   - component: {fileID: 4500535401686297363}
+  - component: {fileID: 3193520462751346418}
   m_Layer: 0
   m_Name: Hallway CCTV / Lab / Kitchen / Restroom
   m_TagString: Untagged
@@ -296786,6 +297123,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3193520462751346418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029025792380993847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7108120355469614601
 GameObject:
   m_ObjectHideFlags: 0
@@ -296800,6 +297157,7 @@ GameObject:
   - component: {fileID: 4910865702598363828}
   - component: {fileID: 416905189957460242}
   - component: {fileID: 5442938932780565552}
+  - component: {fileID: 4214506243780525578}
   m_Layer: 0
   m_Name: Hallway Kitchen / Bedroom / Sonar
   m_TagString: Untagged
@@ -311852,6 +312210,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4214506243780525578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7108120355469614601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7130356337523583397
 GameObject:
   m_ObjectHideFlags: 0
@@ -311866,6 +312244,7 @@ GameObject:
   - component: {fileID: 930836446530509572}
   - component: {fileID: 1560831625036868025}
   - component: {fileID: 4558724223799935824}
+  - component: {fileID: 2585302858225838228}
   m_Layer: 0
   m_Name: Hallway Diving / MoonPool
   m_TagString: Untagged
@@ -318032,6 +318411,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2585302858225838228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130356337523583397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7267983167383921763
 GameObject:
   m_ObjectHideFlags: 0
@@ -318046,6 +318445,7 @@ GameObject:
   - component: {fileID: 6286577238775004819}
   - component: {fileID: 2181187537617718980}
   - component: {fileID: 8388261733254903394}
+  - component: {fileID: 4352248532077408612}
   m_Layer: 0
   m_Name: MoonPool
   m_TagString: Untagged
@@ -355412,6 +355812,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4352248532077408612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7267983167383921763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7981768872840068531
 GameObject:
   m_ObjectHideFlags: 0
@@ -355464,6 +355884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6655558938640678167}
+  - component: {fileID: 2400327240056427869}
   m_Layer: 0
   m_Name: Hallways
   m_TagString: Untagged
@@ -355496,6 +355917,26 @@ Transform:
   - {fileID: 6423490289630653006}
   m_Father: {fileID: 2250423730107089139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2400327240056427869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076003071536442954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8470278776910989380
 GameObject:
   m_ObjectHideFlags: 0
@@ -355510,6 +355951,7 @@ GameObject:
   - component: {fileID: 6351880705454373140}
   - component: {fileID: 6963989118457207197}
   - component: {fileID: 3625410686904225736}
+  - component: {fileID: 2947043649145843350}
   m_Layer: 0
   m_Name: Hallway Lougne / Kitchen
   m_TagString: Untagged
@@ -358316,6 +358758,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2947043649145843350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470278776910989380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8484970716022180861
 GameObject:
   m_ObjectHideFlags: 0
@@ -358330,6 +358792,7 @@ GameObject:
   - component: {fileID: 3555567602005174596}
   - component: {fileID: 3204248564020613070}
   - component: {fileID: 1772100735871300517}
+  - component: {fileID: 4356833182636303704}
   m_Layer: 0
   m_Name: Hallway CCTV / Deck / Storage / Lounge
   m_TagString: Untagged
@@ -377229,3 +377692,23 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &4356833182636303704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484970716022180861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
