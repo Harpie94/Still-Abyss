@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // <-- N'oublie pas ça
+using TMPro;
 
 public class CameraButtonGenerator : MonoBehaviour
 {
