@@ -14,6 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string repairableObjectTag = "AllRepairableObject";
     [SerializeField] private float damageInterval = 10f; // Intervalle en secondes entre les dégâts
     [SerializeField] private int damageAmount = 20; // Quantité de dégâts à infliger
+    
+    [Header("Gestion des salles")]
+    [SerializeField] private List<Rooms> rooms = new List<Rooms>();
+    private readonly Dictionary<Rooms, List<RepairableObject>> repairablesByRoom = new Dictionary<Rooms, List<RepairableObject>>();
 
     public static GameManager Instance;
 
@@ -55,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeRooms();
         InitializeRepairableObjects();
         StartDamageSystem();
     }
@@ -80,6 +85,8 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log($"Trouvé {allRepairableObjects.Count} objets réparables");
+        
+        RebuildRepairablesByRoom();
     }
 
     private void StartDamageSystem()
@@ -132,6 +139,9 @@ public class GameManager : MonoBehaviour
 
         // Appliquer les dégâts
         target.TakeDamage(damageAmount);
+        
+        if(target.AssignedRoom != null)
+            UpdateRoomHealth(target.AssignedRoom);
 
         // Mettre à jour la liste des objets détruits
         if (target.IsDestroyed && !destroyedObjects.Contains(target))
@@ -295,11 +305,13 @@ public class GameManager : MonoBehaviour
     void OnEnable()
     {
         OnGameStateChanged += HandleGameStateChange;
+        Rooms.OnCriticalDamageReached += CriticalDamage;
     }
 
     void OnDisable()
     {
         OnGameStateChanged -= HandleGameStateChange;
+        Rooms.OnCriticalDamageReached -= CriticalDamage;
     }
 
     public void SetCursorLockedState(bool locked)
@@ -327,5 +339,114 @@ public class GameManager : MonoBehaviour
         return obj.CompareTag(playerTag);
     }
 
+    #endregion
+    
+    #region Room Management
+    
+    private void InitializeRooms()
+    {
+        // Si aucune salle n’est assignée dans l’inspecteur, on récupère celles de la scène.
+        if (rooms == null || rooms.Count == 0)
+            rooms = FindObjectsOfType<Rooms>().ToList();
+    }
+
+    public void CriticalDamage(Rooms room)
+    {
+        Debug.LogWarning($"La salle '{room.RoomName}' a atteint un état de dommage critique !");
+    }
+
+    private void RebuildRepairablesByRoom()
+    {
+        repairablesByRoom.Clear();
+
+        foreach (var ro in allRepairableObjects)
+        {
+            if (ro == null) continue;
+            var room = ro.AssignedRoom;
+            if (room == null) continue;
+
+            if (!repairablesByRoom.TryGetValue(room, out var list))
+            {
+                list = new List<RepairableObject>();
+                repairablesByRoom[room] = list;
+            }
+            list.Add(ro);
+        }
+    
+        // Initialiser les points de vie des salles
+        UpdateRoomsHealthPoints();
+    }
+    
+    private void UpdateRoomsHealthPoints()
+    {
+        foreach (var room in rooms)
+        {
+            if (room == null) continue;
+        
+            // Calculer les points de vie max basés sur les objets réparables
+            int totalMaxHealth = CalculateRoomMaxHealth(room);
+            int currentHealth = CalculateRoomCurrentHealth(room);
+        
+            // Initialiser les points de vie de la salle
+            room.InitializeHealth(totalMaxHealth);
+            room.UpdateCurrentHealth(currentHealth);
+        
+            Debug.Log($"Salle '{room.RoomName}': PV max = {totalMaxHealth}, PV actuels = {currentHealth}");
+        }
+    }
+    
+    private int CalculateRoomMaxHealth(Rooms room)
+    {
+        if (room == null || !repairablesByRoom.TryGetValue(room, out var repairables))
+            return 0;
+        
+        int totalMaxHealth = 0;
+        foreach (var obj in repairables)
+        {
+            if (obj != null)
+                totalMaxHealth += obj.GetMaxHealth();
+        }
+    
+        return totalMaxHealth;
+    }
+    
+    private int CalculateRoomCurrentHealth(Rooms room)
+    {
+        if (room == null || !repairablesByRoom.TryGetValue(room, out var repairables))
+            return 0;
+        
+        int totalCurrentHealth = 0;
+        foreach (var obj in repairables)
+        {
+            if (obj != null)
+                totalCurrentHealth += obj.GetCurrentHealth();
+        }
+    
+        return totalCurrentHealth;
+    }
+    
+    public int GetRoomMaxHealth(Rooms room)
+    {
+        return room != null ? room.MaxHealthPoints : 0;
+    }
+    
+    public int GetRoomCurrentHealth(Rooms room)
+    {
+        return room != null ? room.CurrentHealthPoints : 0;
+    }
+    
+    public float GetRoomHealthPercentage(Rooms room)
+    {
+        return room != null ? room.HealthPercentage : 0f;
+    }
+    
+    public void UpdateRoomHealth(Rooms room)
+    {
+        if (room == null) return;
+    
+        int currentHealth = CalculateRoomCurrentHealth(room);
+        room.UpdateCurrentHealth(currentHealth);
+    }
+    
     #endregion
 }

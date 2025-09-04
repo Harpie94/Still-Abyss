@@ -14,6 +14,10 @@ public class RepairableObject : MonoBehaviour
     [Header("Meshes par niveau de dégât")]
     [SerializeField] private Mesh[] damageLevelMeshes;
     
+    [Header("Salle")]
+    [SerializeField] private Rooms assignedRoom;
+    public Rooms AssignedRoom => assignedRoom;
+    
     [Header("Composants")]
     [SerializeField] private MeshFilter meshFilter;
     [SerializeField] private MeshRenderer meshRenderer;
@@ -116,6 +120,18 @@ public class RepairableObject : MonoBehaviour
                 }
             }
         }
+    }
+    
+    // Getter pour la santé actuelle
+    public int GetCurrentHealth()
+    {
+        return currentHealthPoints;
+    }
+    
+    // Getter pour la santé maximale
+    public int GetMaxHealth()
+    { 
+        return maxHealthPoints;
     }
     
     private void UpdateVisualState()
