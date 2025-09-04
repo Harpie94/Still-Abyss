@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
     public GameObject leftPart;
     public GameObject rightPart;
     public bool isOpen { get; private set; }
-    public bool front;
+    [SerializeField] private bool front;
 
     void Start()
     {

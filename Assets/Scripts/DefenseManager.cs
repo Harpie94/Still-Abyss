@@ -22,7 +22,7 @@ public class DefenseManager : MonoBehaviour
 
     public GameObject[] iconRooms = new GameObject[12];
     public GameObject[] doors = new GameObject[29];
-    public static int actualRoom {get; private set;}
+    public int actualRoom {get; private set;}
 
     void Start()
     {
@@ -36,10 +36,7 @@ public class DefenseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.V))
-        {
-            ActivateDoors();
-        }
+
     }
 
     bool GetShutterState(int room)
@@ -92,7 +89,7 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    public static void SetActualRoom(int room)
+    public void SetActualRoom(int room)
     {
         actualRoom = room;
     }
@@ -131,11 +128,11 @@ public class DefenseManager : MonoBehaviour
         }
     }
 
-    void ActivateDoors()
+    void ActivateDoors(int room)
     {
-        if (actualRoom < roomShutterState.Length)
+        if (room < roomShutterState.Length)
         {
-            int[] roomsDoors = GetRoomsDoors(actualRoom);
+            int[] roomsDoors = GetRoomsDoors(room);
             for (int i = 0; i < roomsDoors.Length; i++)
             {
                 int currentDoor = roomsDoors[i];
@@ -144,7 +141,12 @@ public class DefenseManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not in a room");
+            Debug.Log("Not a room");
         }
+    }
+
+    public void ActivateSingleDoor(int doorint)
+    {
+        doors[doorint].GetComponent<Door>().DoorTrigger();
     }
 }

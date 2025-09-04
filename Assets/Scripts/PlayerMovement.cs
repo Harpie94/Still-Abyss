@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
 
     public bool tabletState = false;
 
+    public DefenseManager defenseManager;
+    public int activableDoor = 0;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
@@ -224,7 +227,10 @@ public class PlayerMovement : MonoBehaviour
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
         Debug.Log("Player wants to interact");
-        
+        if (activableDoor != 0)
+        {
+            defenseManager.ActivateSingleDoor(activableDoor);
+        }
     }
 
     void OnTriggerEnter(Collider collider)
@@ -232,40 +238,46 @@ public class PlayerMovement : MonoBehaviour
         switch (collider.tag)
         {
             case "deck":
-                DefenseManager.SetActualRoom(0);
+                defenseManager.SetActualRoom(0);
                 break;
             case "cctv":
-                DefenseManager.SetActualRoom(1);
+                defenseManager.SetActualRoom(1);
                 break;
             case "storage":
-                DefenseManager.SetActualRoom(2);
+                defenseManager.SetActualRoom(2);
                 break;
             case "restroom":
-                DefenseManager.SetActualRoom(3);
+                defenseManager.SetActualRoom(3);
                 break;
             case "lounge":
-                DefenseManager.SetActualRoom(4);
+                defenseManager.SetActualRoom(4);
                 break;
             case "lab":
-                DefenseManager.SetActualRoom(5);
+                defenseManager.SetActualRoom(5);
                 break;
             case "kitchen":
-                DefenseManager.SetActualRoom(6);
+                defenseManager.SetActualRoom(6);
                 break;
             case "bedroom":
-                DefenseManager.SetActualRoom(7);
+                defenseManager.SetActualRoom(7);
                 break;
             case "sonar":
-                DefenseManager.SetActualRoom(8);
+                defenseManager.SetActualRoom(8);
                 break;
             case "gear":
-                DefenseManager.SetActualRoom(9);
+                defenseManager.SetActualRoom(9);
                 break;
             case "o2":
-                DefenseManager.SetActualRoom(10);
+                defenseManager.SetActualRoom(10);
                 break;
             case "moonpool":
-                DefenseManager.SetActualRoom(11);
+                defenseManager.SetActualRoom(11);
+                break;
+            case "doorbutton1":
+                activableDoor = 1;
+                break;
+            case "doorbutton2":
+                activableDoor = 2;
                 break;
             default:
                 Debug.Log("failed");
@@ -276,7 +288,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        DefenseManager.SetActualRoom(12);
+        if (!collider.CompareTag("doorbutton1") && !collider.CompareTag("doorbutton2"))
+        {
+            defenseManager.SetActualRoom(12);
+        }
+        else
+        {
+            activableDoor = 0;
+        }
     }
 
 }
