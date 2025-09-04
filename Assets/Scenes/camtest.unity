@@ -1043,6 +1043,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c7f320540bcbd40910781124b89933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CamRenderTexture: {fileID: 8400000, guid: 7c9164afb214e344f9eb6dd48260e8d4, type: 2}
+  MalfuctionTexture: {fileID: 8600000, guid: 4fe5e9378ba40e04b84fa70063162aa2, type: 2}
+  cam1: {fileID: 842656032182489945}
+  cam2: {fileID: 842656032182489945}
+  cam3: {fileID: 4938558805855068663}
+  malfunctionValue: 100
 --- !u!1 &1935344098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1349,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3956edccc82747048a5e3067caaaff31, type: 3}
+--- !u!20 &842656032182489945 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3451111439066015522, guid: 3956edccc82747048a5e3067caaaff31, type: 3}
+  m_PrefabInstance: {fileID: 842656032182489944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4938558805855068662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1404,6 +1415,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c574a832ed82b945b1b2427f21ea7f6, type: 3}
+--- !u!20 &4938558805855068663 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7731927539822814103, guid: 9c574a832ed82b945b1b2427f21ea7f6, type: 3}
+  m_PrefabInstance: {fileID: 4938558805855068662}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7866020670084774561
 PrefabInstance:
   m_ObjectHideFlags: 0
