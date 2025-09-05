@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -68,7 +69,6 @@ public class PauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(true);
         Time.timeScale = 0f; // Pause the game
-        AudioListener.pause = true; // Pause audio
         isPaused = true;
     }
 
@@ -76,7 +76,6 @@ public class PauseMenu : MonoBehaviour
     {
         pauseUI.SetActive(false);
         Time.timeScale = 1f; // Resume the game
-        AudioListener.pause = false; // Resume audio
         isPaused = false;
 
 
@@ -84,6 +83,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        Debug.Log("Exit");
         Application.Quit();
     }
 
