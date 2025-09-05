@@ -9,6 +9,9 @@ public class DayNightScript : MonoBehaviour
     public bool isDay = true;
     public bool InfiniteCycle = false;
     public TMP_Text timerText;
+    public float CurrentHour { get; private set; }
+    public float CurrentMinute { get; private set; }
+
 
     private float cycleDurationSeconds;
     private int currentCycle = 0;
@@ -68,5 +71,9 @@ public class DayNightScript : MonoBehaviour
             isDay = !isDay;
             currentCycle++;
         }
+
+        CurrentHour = hours;
+        CurrentMinute = minutes;
+
     }
 }
