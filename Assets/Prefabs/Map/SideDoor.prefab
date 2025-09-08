@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 921392104841925141}
   - component: {fileID: 5711270105591461225}
   - component: {fileID: 1970264534440854551}
-  m_Layer: 8
+  m_Layer: 4
   m_Name: RightPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7841556638342870938}
   - component: {fileID: 983099477128963125}
-  m_Layer: 8
+  m_Layer: 4
   m_Name: SideDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 552829444665331270}
   - component: {fileID: 4039223369426423161}
   - component: {fileID: 8168067588769823412}
-  m_Layer: 8
+  m_Layer: 4
   m_Name: LeftPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}

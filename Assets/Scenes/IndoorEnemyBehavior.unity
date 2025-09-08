@@ -3875,6 +3875,13 @@ MonoBehaviour:
         - {fileID: 2038581117}
         - {fileID: 1811420353}
         - {fileID: 607078594}
+        - {fileID: 206536937}
+        - {fileID: 1284310426}
+        - {fileID: 1243291253}
+        - {fileID: 889346576}
+        - {fileID: 1798665964}
+        - {fileID: 540857818}
+        - {fileID: 1443183729}
     - rid: 2334974116452893188
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
