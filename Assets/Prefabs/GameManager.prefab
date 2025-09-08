@@ -44,5 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2b3f70be4f28d42bc64945f46df9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabletCanvas: {fileID: 0}
+  repairableObjectTag: RepairableObject
+  damageInterval: 10
+  damageAmount: 20
+  rooms:
+  - {fileID: 0}
+  defenceObjectTag: DefenceObject
   player: {fileID: 0}
   playerTag: Player

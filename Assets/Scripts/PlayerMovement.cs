@@ -80,8 +80,15 @@ public class PlayerMovement : MonoBehaviour
         if (pauseAction != null)
             pauseAction.wantsInitialStateCheck = true;
 
-        GameManager.Instance.SetCursorLockedState(true);
-
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager instance is null. Ensure there is a GameManager in the scene.");
+        }
+        else
+        {
+            GameManager.Instance.SetCursorLockedState(true);
+        }
+        
         if (TabletCanva != null)
         {
             TabletCanva.enabled = false;
