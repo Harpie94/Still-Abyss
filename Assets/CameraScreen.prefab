@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: layoutGroupParent
       value: 
       objectReference: {fileID: 3512188272857709014}
+    - target: {fileID: 3574323284576913544, guid: 7bea700c43aa186419c6d6bab76f0f95, type: 3}
+      propertyPath: CamOutput
+      value: 
+      objectReference: {fileID: 5107710624532774411}
     - target: {fileID: 4590181708265176427, guid: 7bea700c43aa186419c6d6bab76f0f95, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
