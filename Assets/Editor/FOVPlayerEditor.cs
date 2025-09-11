@@ -3,13 +3,13 @@ using UnityEngine;
 
 
 
-[CustomEditor (typeof(EnemyFOV))]
-public class FOVEnemyEditor : Editor
+[CustomEditor (typeof(PlayerFOV))]
+public class PlayerFOVEditor : Editor
 {
     private void OnSceneGUI()
     {
-        EnemyFOV fov = (EnemyFOV)target;
-        Handles.color = Color.red;
+        PlayerFOV fov = (PlayerFOV)target;
+        Handles.color = Color.white;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.viewRadius);
         Vector3 viewAngleA = fov.DirFromAngle(-fov.viewAngle / 2, false);
         Vector3 viewAngleB = fov.DirFromAngle(fov.viewAngle / 2, false);

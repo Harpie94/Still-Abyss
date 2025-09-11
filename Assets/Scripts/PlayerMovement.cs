@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Events;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Linked Components")]
     [SerializeField] private Canvas TabletCanva;
     public CinemachineCamera playerCamera;
+
+    [Header("Events")]
+    public UnityEvent PlayerInteract;
 
 
     private InputAction moveAction;
@@ -46,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     public DefenseManager defenseManager;
     public int activableDoor = 0;
+
 
     private void Awake()
     {
@@ -81,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogWarning("TabletCanva is not assigned or is null.");
         }
+
     }
 
     private void OnEnable()
@@ -226,7 +233,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
+        PlayerInteract?.Invoke();
         Debug.Log("Player wants to interact");
+
         if (activableDoor != 0)
         {
             defenseManager.ActivateSingleDoor(activableDoor);

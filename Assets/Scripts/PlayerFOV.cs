@@ -1,15 +1,11 @@
 using UnityEngine;
 
-public class EnemyFOV : MonoBehaviour
+public class PlayerFOV : MonoBehaviour
 {
     public float viewRadius = 10f; // The radius of the enemy's field of view
     public float viewAngle = 120f; // The angle of the enemy's field of view
-    public GameObject Player;
-    public bool isChasingPlayer = false;
-    public bool isPlayerInSight = false;
-
-    public Vector3 lastKnownPlayerPosition; // Position du joueur vu pour la dernière fois
-    public Vector3 secondPlayerPosition;    // Nouvelle position du joueur dans le rayon
+    public GameObject Enemy;
+    public bool isEnemyInSight = false;
 
     public LayerMask targetMask; // Layer mask for targets (e.g., player)
     public LayerMask obstacleMask; // Layer mask for obstacles (e.g., walls)
@@ -27,7 +23,10 @@ public class EnemyFOV : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (Enemy == null)
+        {
+            Debug.LogError("Enemy GameObject is not assigned in PlayerFOV script.");
+        }
     }
 
     // Update is called once per frame
@@ -38,16 +37,14 @@ public class EnemyFOV : MonoBehaviour
 
     void DetectPlayerInFOV()
     {
-        if (Player == null) return;
+        if (Enemy == null) return;
 
-        Vector3 dirToPlayer = (Player.transform.position - transform.position).normalized;
-        float distanceToPlayer = Vector3.Distance(transform.position, Player.transform.position);
+        Vector3 dirToPlayer = (Enemy.transform.position - transform.position).normalized;
+        float distanceToPlayer = Vector3.Distance(transform.position, Enemy.transform.position);
 
         // Vérifie si le joueur est dans le rayon de vision
         if (distanceToPlayer <= viewRadius)
         {
-
-            secondPlayerPosition = Player.transform.position;
             // Vérifie si le joueur est dans l'angle de vision
             float angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
             if (angleToPlayer < viewAngle / 2f)
@@ -55,19 +52,20 @@ public class EnemyFOV : MonoBehaviour
                 // Vérifie s'il n'y a pas d'obstacle entre l'ennemi et le joueur
                 if (!Physics.Raycast(transform.position, dirToPlayer, distanceToPlayer, obstacleMask))
                 {
-                    PlayerDetected();
-                    lastKnownPlayerPosition = Player.transform.position; // Sauvegarde la position
+                    EnemyDetected();
                     return;
                 }
+            
+                
             }
         }
 
-        isPlayerInSight = false;
+        isEnemyInSight = false;
     }
 
-    public void PlayerDetected()
+    public void EnemyDetected()
     {
-        isPlayerInSight = true;
+        isEnemyInSight = true;
     }
 }
 
