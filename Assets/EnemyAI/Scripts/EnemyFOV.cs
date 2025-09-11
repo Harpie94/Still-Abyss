@@ -61,6 +61,7 @@ public class EnemyFOV : MonoBehaviour
                 }
             }
         }
+
         isPlayerInSight = false;
     }
 

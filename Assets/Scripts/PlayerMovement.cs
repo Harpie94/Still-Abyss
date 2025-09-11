@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Events;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Canvas TabletCanva;
     public CinemachineCamera playerCamera;
 
+    [Header("Events")]
+    public UnityEvent PlayerInteract;
+
 
     private InputAction moveAction;
     private InputAction lookAction;
@@ -43,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
     public float mouseYRotation;
 
     public bool tabletState = false;
+
+    public DefenseManager defenseManager;
+    public int activableDoor = 0;
+
 
     private void Awake()
     {
@@ -78,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogWarning("TabletCanva is not assigned or is null.");
         }
+
     }
 
     private void OnEnable()
@@ -223,8 +233,78 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnInteractPerformed(InputAction.CallbackContext ctx)
     {
+        PlayerInteract?.Invoke();
         Debug.Log("Player wants to interact");
-        
+
+        if (activableDoor != 0)
+        {
+            defenseManager.ActivateSingleDoor(activableDoor);
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        switch (collider.tag)
+        {
+            case "deck":
+                defenseManager.SetActualRoom(0);
+                break;
+            case "cctv":
+                defenseManager.SetActualRoom(1);
+                break;
+            case "storage":
+                defenseManager.SetActualRoom(2);
+                break;
+            case "restroom":
+                defenseManager.SetActualRoom(3);
+                break;
+            case "lounge":
+                defenseManager.SetActualRoom(4);
+                break;
+            case "lab":
+                defenseManager.SetActualRoom(5);
+                break;
+            case "kitchen":
+                defenseManager.SetActualRoom(6);
+                break;
+            case "bedroom":
+                defenseManager.SetActualRoom(7);
+                break;
+            case "sonar":
+                defenseManager.SetActualRoom(8);
+                break;
+            case "gear":
+                defenseManager.SetActualRoom(9);
+                break;
+            case "o2":
+                defenseManager.SetActualRoom(10);
+                break;
+            case "moonpool":
+                defenseManager.SetActualRoom(11);
+                break;
+            case "doorbutton1":
+                activableDoor = 1;
+                break;
+            case "doorbutton2":
+                activableDoor = 2;
+                break;
+            default:
+                Debug.Log("failed");
+                break;
+        }
+        //if (collider.CompareTag("deck"))
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        if (!collider.CompareTag("doorbutton1") && !collider.CompareTag("doorbutton2"))
+        {
+            defenseManager.SetActualRoom(12);
+        }
+        else
+        {
+            activableDoor = 0;
+        }
     }
 
 }

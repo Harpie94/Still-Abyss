@@ -5,6 +5,20 @@ TagManager:
   serializedVersion: 3
   tags:
   - Camera
+  - cctv
+  - deck
+  - storage
+  - restroom
+  - lounge
+  - lab
+  - kitchen
+  - bedroom
+  - sonar
+  - gear
+  - o2
+  - moonpool
+  - doorbutton1
+  - doorbutton2
   layers:
   - Default
   - TransparentFX
