@@ -6,5 +6,7 @@ public enum ActionTypes
 {
     PlayerNotInRoom,
 	CheckPlayer,
-	Patrol
+	Patrol,
+	Teleport,
+	Idle
 }
