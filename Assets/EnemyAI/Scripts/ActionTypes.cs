@@ -4,7 +4,7 @@ using Unity.Behavior;
 [BlackboardEnum]
 public enum ActionTypes
 {
-    Chase,
+    PlayerNotInRoom,
 	CheckPlayer,
 	Patrol
 }
