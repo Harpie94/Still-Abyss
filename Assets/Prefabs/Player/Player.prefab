@@ -321,6 +321,8 @@ MonoBehaviour:
   playerCamera: {fileID: 8593678847829515768}
   mouseYRotation: 0
   tabletState: 0
+  defenseManager: {fileID: 0}
+  activableDoor: 0
 --- !u!1 &6934653334409876338
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8377229503957241425}
   - component: {fileID: 8593678847829515768}
+  - component: {fileID: 4643485702927683837}
   m_Layer: 0
   m_Name: PlayerView
   m_TagString: Untagged
@@ -397,3 +400,25 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &4643485702927683837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6934653334409876338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9544a4c1a6ba88240aeae4423c7a964b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewRadius: 5
+  viewAngle: 30
+  Enemy: {fileID: 0}
+  isEnemyInSight: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 16

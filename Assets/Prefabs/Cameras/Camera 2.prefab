@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 3507662936809041162}
   - component: {fileID: 6766426694497501245}
   - component: {fileID: 6415548101646457623}
+  - component: {fileID: -191884751771904384}
   m_Layer: 0
   m_Name: Camera 2
   m_TagString: Untagged
@@ -381,3 +382,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-191884751771904384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389533314487356552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e30b586e24a52478f3101982871cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraId: 2
+  CameraTurnedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  CameraTurnedOff:
+    m_PersistentCalls:
+      m_Calls: []

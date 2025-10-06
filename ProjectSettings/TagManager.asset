@@ -17,8 +17,8 @@ TagManager:
   - gear
   - o2
   - moonpool
-  - RepairableObject
-  - DefenceObject
+  - doorbutton1
+  - doorbutton2
   layers:
   - Default
   - TransparentFX

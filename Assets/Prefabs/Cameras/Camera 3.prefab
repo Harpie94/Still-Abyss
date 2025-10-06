@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 6337020292540760366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.760625, y: 6.760625, z: 3.203632}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,11 +175,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6337020292540760366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 6595798763796534477}
   - component: {fileID: 3269430780010911671}
   - component: {fileID: 8661521577921392587}
+  - component: {fileID: -6946923356606191332}
   m_Layer: 0
   m_Name: Camera 3
   m_TagString: Untagged
@@ -298,15 +299,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907849259728808848}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 945.07, y: 549.03, z: -1.0453725}
+  m_LocalRotation: {x: 0.43847796, y: 0.45646042, z: 0.55474067, w: 0.54004055}
+  m_LocalPosition: {x: -25.098045, y: 2.29, z: -27.121}
   m_LocalScale: {x: 0.14791532, y: 0.14791532, z: 0.3121457}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7848265079318467872}
   - {fileID: 1476255628536365508}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.882, y: 78.529, z: 90}
 --- !u!33 &6595798763796534477
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -381,3 +382,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6946923356606191332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907849259728808848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e30b586e24a52478f3101982871cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraId: 3
+  CameraTurnedOn:
+    m_PersistentCalls:
+      m_Calls: []
+  CameraTurnedOff:
+    m_PersistentCalls:
+      m_Calls: []
