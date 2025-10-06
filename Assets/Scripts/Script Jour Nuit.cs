@@ -3,6 +3,9 @@ using TMPro;
 
 public class DayNightScript : MonoBehaviour
 {
+
+
+
     public Light sun;
     public float cycleDurationMinutes = 1f;
     public int totalCycles = 5;
@@ -24,6 +27,8 @@ public class DayNightScript : MonoBehaviour
         {
             sun = GetComponent<Light>();
         }
+
+
     }
 
     void Update()
@@ -44,6 +49,8 @@ public class DayNightScript : MonoBehaviour
             endAngle = 180f;
             startHour = 6f;
             endHour = 18f;
+
+
         }
         else
         {
@@ -51,6 +58,8 @@ public class DayNightScript : MonoBehaviour
             endAngle = 360f;
             startHour = 18f;
             endHour = 30f;
+
+
         }
 
         float targetAngle = Mathf.Lerp(startAngle, endAngle, t);

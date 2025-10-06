@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ClockUI : MonoBehaviour
 {
+    //public GameObject Nightvision;
+
     public float cycleDurationMinutes = 1f;
     private float cycleDurationSeconds;
     private float timer = 0f;
@@ -27,11 +29,15 @@ public class ClockUI : MonoBehaviour
         {
             startHour = 6f;
             endHour = 18f;
+
+            //Nightvision.SetActive(false);
         }
         else
         {
             startHour = 18f;
             endHour = 30f;
+
+            //Nightvision.SetActive(true);
         }
 
         float currentHour = Mathf.Lerp(startHour, endHour, t);
