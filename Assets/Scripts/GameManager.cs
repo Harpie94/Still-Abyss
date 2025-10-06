@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour
     private readonly Dictionary<Rooms, List<RepairableObject>> repairablesByRoom = new Dictionary<Rooms, List<RepairableObject>>();
     
     [Header("Defences Management")]
-    [SerializeField] private string defenceObjectTag = "DefenceObject";
-    private DefenseManager defenseManager;
+    [SerializeField] private DefenseManager defenseManager;
 
     public static GameManager Instance;
 
@@ -65,34 +64,9 @@ public class GameManager : MonoBehaviour
     {
         InitializeRooms();
         InitializeRepairableObjects();
-        InitializeDefenceObjects();
         StartDamageSystem();
     }
 
-    #endregion
-    
-    #region Defence Management
-
-    private void InitializeDefenceObjects()
-    {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag(defenceObjectTag);
-
-        if (objects.Length > 0)
-        {
-            defenseManager = objects[0].GetComponent<DefenseManager>();
-            if (defenseManager == null)
-            {
-                Debug.LogWarning("Le composant DefenseManager est introuvable sur l'objet avec le tag 'DefenceObject'.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Aucun objet trouvé avec le tag 'DefenceObject'.");
-        }
-        
-        
-    }
-    
     #endregion
 
     #region Damage Management
@@ -417,7 +391,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
         
-        Debug.LogWarning($"La salle '{room.RoomName}' a atteint un état de dommage critique !");
     }
 
     private void RebuildRepairablesByRoom()
@@ -478,7 +451,10 @@ public class GameManager : MonoBehaviour
     private int CalculateRoomCurrentHealth(Rooms room)
     {
         if (room == null || !repairablesByRoom.TryGetValue(room, out var repairables))
+        {
+            Debug.Log($"Aucun objet réparables trouvé pour la salle '{room?.RoomName ?? "null"}'");
             return 0;
+        }
         
         int totalCurrentHealth = 0;
         foreach (var obj in repairables)

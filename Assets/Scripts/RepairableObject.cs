@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -38,11 +39,16 @@ public class RepairableObject : MonoBehaviour
     
     private bool isBeingRepaired = false;
     private Coroutine repairCoroutine;
-    
-    private void Start()
+
+    private void Awake()
     {
         currentHealthPoints = maxHealthPoints;
         UpdateVisualState();
+    }
+
+    private void Start()
+    {
+        //UpdateVisualState();
     }
     
     public void TakeDamage(int damage)
