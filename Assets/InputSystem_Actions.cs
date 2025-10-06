@@ -370,6 +370,45 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Camera"",
+            ""id"": ""beef4096-0bdb-4701-aea5-571ec49f46f6"",
+            ""actions"": [
+                {
+                    ""name"": ""LeaveCCTV"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a5ae513-e9ff-4bde-bf41-30a786dd6fe7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fb2b5a2c-0529-4a85-a167-08ccf4726828"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeaveCCTV"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7fdce11-d330-4c1a-adfe-f0714ccdcbc8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeaveCCTV"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -448,6 +487,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Pause
         m_Pause = asset.FindActionMap("Pause", throwIfNotFound: true);
         m_Pause_Escape = m_Pause.FindAction("Escape", throwIfNotFound: true);
+        // Camera
+        m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
+        m_Camera_LeaveCCTV = m_Camera.FindAction("LeaveCCTV", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -455,6 +497,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputSystem_Actions.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Pause.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Pause.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Camera.enabled, "This will cause a leak and performance issues, InputSystem_Actions.Camera.Disable() has not been called.");
     }
 
     /// <summary>
@@ -858,6 +901,102 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PauseActions" /> instance referencing this action map.
     /// </summary>
     public PauseActions @Pause => new PauseActions(this);
+
+    // Camera
+    private readonly InputActionMap m_Camera;
+    private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
+    private readonly InputAction m_Camera_LeaveCCTV;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Camera".
+    /// </summary>
+    public struct CameraActions
+    {
+        private @InputSystem_Actions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CameraActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Camera/LeaveCCTV".
+        /// </summary>
+        public InputAction @LeaveCCTV => m_Wrapper.m_Camera_LeaveCCTV;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Camera; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CameraActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CameraActions" />
+        public void AddCallbacks(ICameraActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CameraActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CameraActionsCallbackInterfaces.Add(instance);
+            @LeaveCCTV.started += instance.OnLeaveCCTV;
+            @LeaveCCTV.performed += instance.OnLeaveCCTV;
+            @LeaveCCTV.canceled += instance.OnLeaveCCTV;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CameraActions" />
+        private void UnregisterCallbacks(ICameraActions instance)
+        {
+            @LeaveCCTV.started -= instance.OnLeaveCCTV;
+            @LeaveCCTV.performed -= instance.OnLeaveCCTV;
+            @LeaveCCTV.canceled -= instance.OnLeaveCCTV;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CameraActions.UnregisterCallbacks(ICameraActions)" />.
+        /// </summary>
+        /// <seealso cref="CameraActions.UnregisterCallbacks(ICameraActions)" />
+        public void RemoveCallbacks(ICameraActions instance)
+        {
+            if (m_Wrapper.m_CameraActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CameraActions.AddCallbacks(ICameraActions)" />
+        /// <seealso cref="CameraActions.RemoveCallbacks(ICameraActions)" />
+        /// <seealso cref="CameraActions.UnregisterCallbacks(ICameraActions)" />
+        public void SetCallbacks(ICameraActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CameraActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CameraActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CameraActions" /> instance referencing this action map.
+    /// </summary>
+    public CameraActions @Camera => new CameraActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -995,5 +1134,20 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEscape(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Camera" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CameraActions.AddCallbacks(ICameraActions)" />
+    /// <seealso cref="CameraActions.RemoveCallbacks(ICameraActions)" />
+    public interface ICameraActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "LeaveCCTV" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeaveCCTV(InputAction.CallbackContext context);
     }
 }

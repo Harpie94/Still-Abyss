@@ -284,6 +284,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Camera",
+            "id": "beef4096-0bdb-4701-aea5-571ec49f46f6",
+            "actions": [
+                {
+                    "name": "LeaveCCTV",
+                    "type": "Button",
+                    "id": "4a5ae513-e9ff-4bde-bf41-30a786dd6fe7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fb2b5a2c-0529-4a85-a167-08ccf4726828",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeaveCCTV",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7fdce11-d330-4c1a-adfe-f0714ccdcbc8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeaveCCTV",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Input Action")]
     [SerializeField] private InputActionAsset PlayerControls;
     [SerializeField] private string PlayerActionMapName = "Player";
+    private InputActionMap PlayerActionMap;
 
     [Header("Linked Components")]
     [SerializeField] private Canvas TabletCanva;
@@ -63,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         originalHeight = characterController.height; // Stocke la hauteur d'origine
 
-        var PlayerActionMap = PlayerControls.FindActionMap(PlayerActionMapName);
+        PlayerActionMap = PlayerControls.FindActionMap(PlayerActionMapName);
         moveAction = PlayerActionMap.FindAction("Move");
         lookAction = PlayerActionMap.FindAction("Look");
         sprintAction = PlayerActionMap.FindAction("Sprint");
@@ -88,6 +89,16 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogWarning("TabletCanva is not assigned or is null.");
         }
 
+    }
+
+    public void DisableInputs() 
+    { 
+      PlayerActionMap.Disable();
+    }
+
+    public void EnableInputs()
+    {
+        PlayerActionMap.Enable();
     }
 
     private void OnEnable()

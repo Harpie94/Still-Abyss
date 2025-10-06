@@ -11,19 +11,13 @@ public class ButtonScript : MonoBehaviour
 
     private void Start()
     {
-        if (Player == null)
-        {
-            Debug.LogError("No player assigned to the button, please assign one in the inspector.");
-        }
+
         if (Doors == null)
         {
             Debug.LogWarning("Button doesn't have any doors assigned");
         }
         doorScript = Doors.GetComponent<DoorScript>();
 
-        // Add listener to the PlayerInteract event in PlayerMovement
-        var playerMovement = Player.GetComponent<PlayerMovement>();
-        playerMovement.PlayerInteract.AddListener(Interact);
     }
 
 
