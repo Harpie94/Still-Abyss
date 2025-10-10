@@ -47,7 +47,7 @@ public class ClockUI : MonoBehaviour
         float angle = (currentHour / 24f) * 360f;
 
         if (mainClock != null)
-            mainClock.localRotation = Quaternion.Euler(0, 0, angle);
+            mainClock.localRotation = Quaternion.Euler(0, 0, angle + 90);
 
         if (timer >= cycleDurationSeconds)
         {
