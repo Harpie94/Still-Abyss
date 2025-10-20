@@ -1,55 +1,66 @@
 using UnityEngine;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine.UI;
 
-public class Malfunction : MonoBehaviour
+public class CameraSurveillanceControl : MonoBehaviour
 {
-    public RawImage CamOutput;
-    public Texture malfuctiontexture;
+    [Header("Références à assigner dans l'inspecteur")]
+    [SerializeField] private MonoBehaviour salleScript; // Script contenant la variable d'état
+    [SerializeField] private string variableName = "etatSalle"; // Nom exact de la variable dans le script
+    [SerializeField] private Camera cameraSalle; // La caméra de la salle
+    [SerializeField] private RenderTexture renderTexture; // RenderTexture utilisée quand tout va bien
+    [SerializeField] private Texture2D imageHS; // Image affichée quand la salle est endommagée
+    [SerializeField] private RawImage ecranImage; // L'image sur l'écran (UI)
 
-    public RenderTexture CamRenderTexture;
-    public RenderTexture MalfuctionTexture;
-
-    [SerializeField]
-    public Camera cam1;
-    public Camera cam2;
-    public Camera cam3;
-
-    [Range(0, 100)]
-    public int malfunctionValue1 = 100;
-
-    [Range(0, 100)]
-    public int malfunctionValue2 = 100;
-
-    [Range(0, 100)]
-    public int malfunctionValue3 = 100;
+    private Texture textureInitiale;
+    private System.Reflection.FieldInfo variableInfo;
 
     void Start()
     {
+        // Sauvegarde la texture initiale
+        if (ecranImage != null)
+            textureInitiale = ecranImage.texture;
 
+        // On récupère la variable du script de salle par réflexion
+        if (salleScript != null)
+            variableInfo = salleScript.GetType().GetField(variableName);
+
+        if (variableInfo == null)
+            Debug.LogWarning($"Impossible de trouver la variable '{variableName}' dans le script '{salleScript}'.");
     }
 
     void Update()
     {
+        if (variableInfo == null) return;
 
+        // Récupère la valeur de la variable
+        object value = variableInfo.GetValue(salleScript);
+
+
+        if (value is float floatValue)
+        {
+            GérerAffichage(floatValue);
+        }
+        else if (value is int intValue)
+        {
+            GérerAffichage(intValue);
+        }
     }
 
-
-    public void buttoncheckmalfunction()
+    private void GérerAffichage(float valeur)
     {
-        if (malfunctionValue1 == 0)
+        // Quand la salle est endommagée
+        if (valeur <= 0)
         {
-            //cam1.targetTexture = MalfuctionTexture;
-            //cam1.enabled = false;   // Caméra coupée
-            CamOutput.texture = malfuctiontexture;
+            if (cameraSalle != null) cameraSalle.enabled = false;
+            if (ecranImage != null && imageHS != null)
+                ecranImage.texture = imageHS;
         }
-        else
+        // Quand la salle est réparée
+        else if (valeur >= 25)
         {
-            //cam1.enabled = true;    // Caméra active
-            cam1.targetTexture = CamRenderTexture;
-            CamOutput.texture = CamRenderTexture;
+            if (cameraSalle != null) cameraSalle.enabled = true;
+            if (ecranImage != null && renderTexture != null)
+                ecranImage.texture = renderTexture;
         }
     }
-
 }
