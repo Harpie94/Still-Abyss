@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1988007841119980984}
   - component: {fileID: 7758900141624298985}
   - component: {fileID: 2887253544808437114}
+  - component: {fileID: 5124063235843877180}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -110,6 +111,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &5124063235843877180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2817477381408866507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac311f38099e00428908544224a987e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  etatSalle: 100
 --- !u!1 &4093909531530165809
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +137,7 @@ GameObject:
   - component: {fileID: 5212284341434088492}
   - component: {fileID: 7498962869668581605}
   m_Layer: 0
-  m_Name: Cam 3
+  m_Name: Cam 4
   m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +232,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -284,6 +298,7 @@ GameObject:
   - component: {fileID: 1334589589340418449}
   - component: {fileID: 3668692639491052821}
   - component: {fileID: -2329732161629487584}
+  - component: {fileID: 8486052308010871308}
   m_Layer: 0
   m_Name: Camera 4
   m_TagString: Untagged
@@ -299,9 +314,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8694971812246486812}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.43847796, y: 0.45646042, z: 0.55474067, w: 0.54004055}
+  m_LocalRotation: {x: 0.43847746, y: 0.4564594, z: 0.55474097, w: 0.5400415}
   m_LocalPosition: {x: -25.098045, y: 2.29, z: -27.121}
-  m_LocalScale: {x: 0.14791532, y: 0.14791532, z: 0.3121457}
+  m_LocalScale: {x: 0.1479153, y: 0.14791533, z: 0.31214574}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5549379831048954821}
@@ -401,3 +416,21 @@ MonoBehaviour:
   CameraTurnedOff:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8486052308010871308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694971812246486812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c7f320540bcbd40910781124b89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  salleScript: {fileID: 5124063235843877180}
+  variableName: etatSalle
+  cameraSalle: {fileID: 3920420388590829592}
+  renderTexture: {fileID: 8400000, guid: 7c9164afb214e344f9eb6dd48260e8d4, type: 2}
+  imageHS: {fileID: 2800000, guid: 48934525c64230842a28708fba23b09b, type: 3}
+  ecranImage: {fileID: 0}

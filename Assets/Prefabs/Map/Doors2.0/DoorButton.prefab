@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5582974138087939163}
   - component: {fileID: 5880872033435383234}
   - component: {fileID: 5924688097295005751}
-  - component: {fileID: 2092946663714949728}
+  - component: {fileID: 6722757079084845755}
   m_Layer: 0
   m_Name: DoorButton
   m_TagString: Untagged
@@ -109,7 +109,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.5002403, y: 6, z: 3.4032583}
   m_Center: {x: 1.2501202, y: 0, z: -0.058295727}
---- !u!114 &2092946663714949728
+--- !u!114 &6722757079084845755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46253b20896fb7747bd21f1611f7e94c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 6169019037959309431, guid: ae11e98c711f42a4d99338298296f7e6, type: 3}
+  Player: {fileID: 0}
   Doors: {fileID: 0}
   canInteract: 0

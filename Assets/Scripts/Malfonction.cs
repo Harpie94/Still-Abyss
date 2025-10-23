@@ -11,6 +11,13 @@ public class CameraSurveillanceControl : MonoBehaviour
     [SerializeField] private Texture2D imageHS; // Image affichée quand la salle est endommagée
     [SerializeField] private RawImage ecranImage; // L'image sur l'écran (UI)
 
+    [SerializeField] private ButtonScript DoorButton1;
+    [SerializeField] private ButtonScript DoorButton2;
+    [SerializeField] private ButtonScript DoorButton3;
+    [SerializeField] private ButtonScript DoorButton4;
+
+    
+
     private Texture textureInitiale;
     private System.Reflection.FieldInfo variableInfo;
 
@@ -54,6 +61,10 @@ public class CameraSurveillanceControl : MonoBehaviour
             if (cameraSalle != null) cameraSalle.enabled = false;
             if (ecranImage != null && imageHS != null)
                 ecranImage.texture = imageHS;
+            DoorButton1.canInteract = false;
+            DoorButton2.canInteract = false;
+            DoorButton3.canInteract = false;
+            DoorButton4.canInteract = false;
         }
         // Quand la salle est réparée
         else if (valeur >= 25)

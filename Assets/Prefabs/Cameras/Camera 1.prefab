@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2087835112617271941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.368}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.760625, y: 6.760625, z: 3.203632}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65,11 +65,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -108,7 +108,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087835112617271941}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 815784886950482761}
   - component: {fileID: 8463694723894453840}
   - component: {fileID: -4606557251418059530}
+  - component: {fileID: 1896019210302982202}
   m_Layer: 0
   m_Name: Camera 1
   m_TagString: Untagged
@@ -191,7 +192,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.19022249, y: 0.2636145, z: 0.015433865, w: 0.94556046}
   m_LocalPosition: {x: 940.95703, y: 542.46246, z: -6.84977}
-  m_LocalScale: {x: 0.14791532, y: 0.14791532, z: 0.3121457}
+  m_LocalScale: {x: 0.14791533, y: 0.14791533, z: 0.3121457}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5503372489790781154}
@@ -291,6 +292,28 @@ MonoBehaviour:
   CameraTurnedOff:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1896019210302982202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639165284463548768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c7f320540bcbd40910781124b89933, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  salleScript: {fileID: 4594529309632455783}
+  variableName: etatSalle
+  cameraSalle: {fileID: 3451111439066015522}
+  renderTexture: {fileID: 8400000, guid: 7c9164afb214e344f9eb6dd48260e8d4, type: 2}
+  imageHS: {fileID: 2800000, guid: 48934525c64230842a28708fba23b09b, type: 3}
+  ecranImage: {fileID: 0}
+  DoorButton1: {fileID: 0}
+  DoorButton2: {fileID: 0}
+  DoorButton3: {fileID: 0}
+  DoorButton4: {fileID: 0}
 --- !u!1 &6366115676651464355
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,6 +326,7 @@ GameObject:
   - component: {fileID: 1118691099634868941}
   - component: {fileID: 8362257787012405411}
   - component: {fileID: 5708802925142035427}
+  - component: {fileID: 4594529309632455783}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -401,3 +425,16 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &4594529309632455783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6366115676651464355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac311f38099e00428908544224a987e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  etatSalle: 100
